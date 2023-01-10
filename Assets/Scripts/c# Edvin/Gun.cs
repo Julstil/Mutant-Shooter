@@ -24,7 +24,6 @@ public class Gun : MonoBehaviour
     [Header("Bullet Flashes")]
     public GameObject impactEffect;
     public ParticleSystem muzzleFlash;
-    public GameObject pointLight;
 
     [HideInInspector]
     public RaycastHit hit;
@@ -49,13 +48,7 @@ public class Gun : MonoBehaviour
 
             Shoot();
             muzzleFlash.Play();
-            pointLight.SetActive(true);
         }
-        else
-        {
-            pointLight.SetActive(false);
-        }
-        
     }
 
     public virtual void Shoot()
@@ -64,17 +57,22 @@ public class Gun : MonoBehaviour
         {
             print(hit.transform.name);
 
-            //Player player = hit.transform.GetComponent<Player>();
+            /*Player player = hit.transform.GetComponent<Player>();
 
             if (hit.transform != null && hit.transform.tag == Enemy.tag)
             {
-                //EnemyScript.TakeDamage(damage);
+                EnemyScript.TakeDamage(damage);
             }
-            else { }
+            else { }*/
+
+            if (hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal, ForceMode.Impulse);
+            }
 
             GameObject ImpactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); //skapar paticlesystem - EN
             ImpactGO.transform.parent = hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
-            Destroy(ImpactGO, 5);
+            Destroy(ImpactGO, 8);
         }
     }
 }
