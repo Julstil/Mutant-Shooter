@@ -47,23 +47,22 @@ public class movement : MonoBehaviour
         move.y = Rb.velocity.y; //hastigheten i y axeln är lika stor som den får frå rigidbodyns "insatta kod" - EN
         Rb.velocity = move; // rigidbodyns hastighet är lika med move variabeln - EN
 
-        if (Input.GetButtonDown("Jump") && isgrounded) //om isground är sann och man trycker på hopp knappen hoppar man - EN
+        if (Input.GetButtonDown("Jump") && isgrounded && !Input.GetKeyDown(crouch)) //om isground är sann och man trycker på hopp knappen hoppar man - EN
         {
             Rb.AddForce(jump, ForceMode.Impulse); //Hoppar lika högt som jump variabeln säger (som lyssnar på jumpheight variabeln)- EN
             isgrounded = false;
         }
 
-        if (Input.GetKeyDown(crouch) && isgrounded)
+        if (Input.GetKeyDown(crouch))
         {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
             Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
-            //transform.position = new Vector3(transform.position.x, transform.position.y / 2, transform.position.z);
         }
-        else if (Input.GetKeyUp(crouch) && isgrounded)
+        else if (Input.GetKeyUp(crouch))
         {
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
             Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
-           // transform.position = new Vector3(transform.position.x, transform.position.y * 2, transform.position.z);
         }
     }
 

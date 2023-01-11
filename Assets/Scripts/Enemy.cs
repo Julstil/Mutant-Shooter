@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     public Transform[] patroling;
     int currentPoint;
 
+    //Edvin lägger in damage - EN
+    public int health = 200;
+
+
     void Update()
     {
         distancePlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -71,5 +75,21 @@ public class Enemy : MonoBehaviour
                 currentPoint = 0;
             }
         }
+    }
+
+    public void TakeDamage(int Damage)
+    {
+        health -= Damage;
+
+        if (health <= 0)
+        {
+            Die(); //Sätter igång die funktionen - EN
+        }
+    }
+
+    public void Die()
+    {
+        print("Enemy Dead");
+        //Ni får fylla i mer här sen - EN
     }
 }

@@ -57,13 +57,13 @@ public class Gun : MonoBehaviour
         {
             print(hit.transform.name);
 
-            /*Player player = hit.transform.GetComponent<Player>();
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
 
-            if (hit.transform != null && hit.transform.tag == Enemy.tag)
+            if (enemy != null && hit.transform.tag == Enemy.tag)
             {
-                EnemyScript.TakeDamage(damage);
+                enemy.TakeDamage(damage);
             }
-            else { }*/
+            else { }
 
             if (hit.rigidbody != null)
             {
