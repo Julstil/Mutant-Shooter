@@ -8,9 +8,13 @@ public class movement : MonoBehaviour
      * Kod för att röra sig
      */
 
-    [Header("Movement Power")]
+    [Header("Movement")]
     public float speed = 6;
     public float jumpheight = 12;
+
+    [Header("Crouching")]
+    public KeyCode crouch;
+    public GameObject Gun;
 
     [Header("Jump checks")]
     bool isgrounded;
@@ -48,7 +52,19 @@ public class movement : MonoBehaviour
             Rb.AddForce(jump, ForceMode.Impulse); //Hoppar lika högt som jump variabeln säger (som lyssnar på jumpheight variabeln)- EN
             isgrounded = false;
         }
-        
+
+        if (Input.GetKeyDown(crouch) && isgrounded)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
+            Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
+            //transform.position = new Vector3(transform.position.x, transform.position.y / 2, transform.position.z);
+        }
+        else if (Input.GetKeyUp(crouch) && isgrounded)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
+            Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
+           // transform.position = new Vector3(transform.position.x, transform.position.y * 2, transform.position.z);
+        }
     }
 
 }

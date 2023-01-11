@@ -310,6 +310,12 @@ Transform:
   m_Father: {fileID: 31821939}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0.29, z: 0}
+--- !u!1 &313437244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2557512353729404016, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3440594253913013910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &369084014
 GameObject:
   m_ObjectHideFlags: 0
@@ -9086,6 +9092,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3440594253208997761, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: crouch
+      value: 306
+      objectReference: {fileID: 0}
+    - target: {fileID: 3440594253208997761, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: Gun
+      value: 
+      objectReference: {fileID: 313437244}
     - target: {fileID: 3440594253208997771, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: pressButtenText
