@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     float distancePlayer;
     public float normalDistance;
+    public float attackDistance;
 
     public float speed;
 
@@ -27,12 +28,12 @@ public class Enemy : MonoBehaviour
         //Eftersom den ska kunna gå tillbaka till att jaga, aka att speed inte ska vara 0 så har vi gjort den här if-satsen
         if (chasing == true)
         {
-            //print("Tjena");
+            /*print("Tjena");*/
             speed = 3;
         }
         else
         {
-            //print("stilla");
+            /*print("stilla");*/
             speed = 1;
         }
 
@@ -50,8 +51,11 @@ public class Enemy : MonoBehaviour
             //Här ska den gå mot positionen listan patroling är på
             transform.LookAt(patroling[currentPoint].position);
             transform.Translate(0, 0, speed * Time.deltaTime);
-            print("Patrullering");
+            /*print("Patrullering");*/
             
+        }else if(attackDistance < 1.5f && distancePlayer < normalDistance)
+        {
+            print("Attack");
         }
     }
     private void OnTriggerStay(Collider obj)
@@ -59,6 +63,7 @@ public class Enemy : MonoBehaviour
         if (obj.gameObject.tag == "Player")
         {
             speed = 0;
+            //Lägga till skada vid playern här? 
         }
         else
         {

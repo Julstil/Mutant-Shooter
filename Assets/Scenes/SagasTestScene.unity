@@ -247,11 +247,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1626987531}
   normalDistance: 3
+  attackDistance: 1
   speed: 3
   patroling:
   - {fileID: 1957842860}
   - {fileID: 638719731}
   - {fileID: 753104236}
+  health: 200
 --- !u!1 &638719729
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   jumpheight: 12
+  crouch: 0
+  Gun: {fileID: 0}
   groundCheck: {fileID: 918345614}
   groundDistance: 0.2
   groundMask:
