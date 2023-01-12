@@ -9,13 +9,14 @@ public class throwNade : MonoBehaviour
 
     public float throwRate = 10;
     float throwRateTime;
+    float savethrowRate;
     public float throwForce = 40;
     public float farFromPlayer = -1;
     public GameObject grenadePrefab;
 
     private void Start()
     {
-
+        savethrowRate = throwRate;
     }
     // Update is called once per frame
     void Update()
@@ -25,7 +26,7 @@ public class throwNade : MonoBehaviour
         {
             ThrowGrenade();
             throwRateTime = throwRate;
-            throwRate = throwRate + throwRate;
+            throwRate = throwRate + savethrowRate;
         }
     }
 
