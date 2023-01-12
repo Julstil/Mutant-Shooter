@@ -51,18 +51,22 @@ public class Enemy : MonoBehaviour
             //Här ska den gå mot positionen listan patroling är på
             transform.LookAt(patroling[currentPoint].position);
             transform.Translate(0, 0, speed * Time.deltaTime);
+            print("Patrullering");
             /*print("Patrullering");*/
             
-        }else if(attackDistance < 1.5f && distancePlayer < normalDistance)
-        {
-            print("Attack");
         }
+        
+        /*if(attackDistance > normalDistance || attackDistance < 2) //|
+        {//Om attackDistance är större än normaldistance så ska den göra det här
+            chasing = true;
+            print("Attack");
+        }*/
     }
     private void OnTriggerStay(Collider obj)
     {
         if (obj.gameObject.tag == "Player")
         {
-            speed = 0;
+            //speed = 0; Den skrivs över av annan kod
             //Lägga till skada vid playern här? 
         }
         else
