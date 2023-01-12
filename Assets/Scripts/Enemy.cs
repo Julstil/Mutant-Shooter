@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,9 +21,17 @@ public class Enemy : MonoBehaviour
     //Edvin lägger in damage - EN
     public int health = 200;
 
+    NavMeshAgent agent;
 
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
     void Update()
     {
+        agent.SetDestination(patroling[currentPoint].position);
+
+#if false
         distancePlayer = Vector3.Distance(transform.position, player.transform.position);
 
         //Eftersom den ska kunna gå tillbaka till att jaga, aka att speed inte ska vara 0 så har vi gjort den här if-satsen
@@ -41,16 +50,16 @@ public class Enemy : MonoBehaviour
         {
             //Om avståndet mellan spelaren och enemyn är mindre än enemyns räckhåll så ska den börja jaga playern
             chasing = true;
-            transform.LookAt(player.transform.position);
-            transform.Translate(0, 0, speed * Time.deltaTime);
+            //transform.LookAt(player.transform.position);
+            //transform.Translate(0, 0, speed * Time.deltaTime);
 
         }else if(distancePlayer > normalDistance)
         {
             //Här ändras speed till 2 och man börjar patrullera
             chasing = false;
             //Här ska den gå mot positionen listan patroling är på
-            transform.LookAt(patroling[currentPoint].position);
-            transform.Translate(0, 0, speed * Time.deltaTime);
+            //transform.LookAt(patroling[currentPoint].position);
+            //transform.Translate(0, 0, speed * Time.deltaTime);
             print("Patrullering");
             /*print("Patrullering");*/
             
@@ -61,10 +70,12 @@ public class Enemy : MonoBehaviour
             chasing = true;
             print("Attack");
         }*/
+
+#endif
     }
-    private void OnTriggerStay(Collider obj)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (obj.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
             //speed = 0; Den skrivs över av annan kod
             //Lägga till skada vid playern här? 
@@ -74,7 +85,7 @@ public class Enemy : MonoBehaviour
             speed = 5f;
         }
 
-        if(obj.gameObject.tag == "PatrolPoints")
+        if(collider.gameObject.tag == "PatrolPoints")
         {
             currentPoint++;
             print("point nr: " + currentPoint);
