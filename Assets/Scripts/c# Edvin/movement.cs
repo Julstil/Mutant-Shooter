@@ -11,10 +11,19 @@ public class movement : MonoBehaviour
     [Header("Movement")]
     public float speed = 6;
     public float jumpheight = 12;
+    float saveSpeed;
 
     [Header("Crouching")]
     public KeyCode crouch;
     public GameObject Gun;
+    public float crouchSpeed;
+    bool cancrouch;
+
+    [Header("Sprint")]
+    public KeyCode sprint;
+    public float sprintSpeed;
+    Gun gun;
+    throwNade throwNade;
 
     [Header("Jump checks")]
     bool isgrounded;
@@ -23,15 +32,22 @@ public class movement : MonoBehaviour
     public LayerMask groundMask;
 
     Vector3 jump;
-
     Rigidbody Rb;
 
+    float saveScaleY;
+    float gunSaveScaleY;
 
     // Start is called before the first frame update
     void Start()
     {
+        throwNade = GetComponentInChildren<throwNade>();
+        gun = GetComponentInChildren<Gun>();
         Rb = GetComponent<Rigidbody>();
         jump = transform.up * jumpheight;
+        cancrouch = true;
+        saveSpeed = speed;
+        saveScaleY = transform.localScale.y;
+        gunSaveScaleY = Gun.transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -53,17 +69,43 @@ public class movement : MonoBehaviour
             isgrounded = false;
         }
 
-        if (Input.GetKeyDown(crouch))
+        if (Input.GetKeyDown(sprint))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
-            Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
+            cancrouch = false;
+            speed = sprintSpeed;
+            Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, -80.367f);
+            gun.enabled = false;
+            throwNade.enabled = false;
         }
-        else if (Input.GetKeyUp(crouch))
+        else if (Input.GetKeyUp(sprint))
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
-            Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
+            cancrouch = true;
+            speed = saveSpeed;
+            Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, 0);
+            gun.enabled = true;
+            throwNade.enabled = true;
+        }
+
+        if (cancrouch)
+        {
+            if (Input.GetKeyDown(crouch))
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
+                Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
+                speed = crouchSpeed;
+            }
+            else if (Input.GetKeyUp(crouch))
+            {
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
+                Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
+                speed = saveSpeed;
+            }
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, saveScaleY, transform.localScale.z);
+            Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, gunSaveScaleY, Gun.transform.localScale.z);
         }
     }
-
 }

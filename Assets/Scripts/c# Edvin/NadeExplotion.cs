@@ -15,6 +15,9 @@ public class NadeExplotion : MonoBehaviour
     public GameObject explosionEffect;
     public float dissapear = 1;
 
+    [Header("Explotion force")]
+    public float explotionForce;
+
     Enemy enemy;
     bool hasExploded = false;
 
@@ -43,13 +46,19 @@ public class NadeExplotion : MonoBehaviour
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explotianRadius); //skapar en erray av colliders inom explotions radien - EN
 
-        foreach (var nearbyEnemy in colliders)
+        foreach (var insideBlastRadius in colliders)
         {
-            if (nearbyEnemy.transform.GetComponent<Enemy>())
+            var RigidBody = insideBlastRadius.transform.GetComponent<Rigidbody>();
+
+            if (insideBlastRadius.transform.GetComponent<Enemy>())
             {
                 enemy.TakeDamage(NadeDamage);
             }
             else { }
+            if (RigidBody)
+            {
+                RigidBody.AddExplosionForce(explotionForce, transform.position, explotianRadius);
+            }
         }
         //För varje colliders spelare som har samma tag som spelaren som kastade granaten ska healas med inten healThisMutch - EN
 
