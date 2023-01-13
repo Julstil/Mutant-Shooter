@@ -7,6 +7,9 @@ TagManager:
   - PatrolPoints
   - Computer
   - Enemy
+  - Interactable
+  - pickUp
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - 
   - 
   - floor
-  - 
+  - Player
   - 
   - 
   - 
