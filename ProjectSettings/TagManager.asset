@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PatrolPoints
   - Computer
+  - Enemy
   layers:
   - Default
   - TransparentFX

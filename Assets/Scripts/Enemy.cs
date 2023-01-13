@@ -37,30 +37,39 @@ public class Enemy : MonoBehaviour
         //Eftersom den ska kunna gå tillbaka till att jaga, aka att speed inte ska vara 0 så har vi gjort den här if-satsen
         if (chasing == true)
         {
-            /*print("Tjena");*/
             agent.speed = 6;
         }
         else
         {
-            /*print("stilla");*/
             agent.speed = 1;
         }
 
         if (distancePlayer < normalDistance)
+        {
+            print("jaga");
+
+            chasing = true;
+
+            agent.SetDestination(player.transform.position);
+
+        }
+        else if (distancePlayer > normalDistance)
+        {
+            chasing = false;
+
+            agent.SetDestination(patroling[currentPoint].position);
+
+            print("Patrullering");
+        }
+
+        if (distancePlayer < attackDistance)
         {
             print("attack");
 
             chasing = true;
 
             agent.SetDestination(player.transform.position);
-            
 
-        }
-        else if (distancePlayer > normalDistance)
-        {
-            chasing = false;
-            agent.SetDestination(patroling[currentPoint].position);
-            print("Patrullering");
         }
 
 #if false
