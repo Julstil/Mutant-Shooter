@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
 
     //Edvin lägger in damage - EN
     public int health = 200;
+    public int DoDamage = 20;
+    Player Player;
 
     NavMeshAgent agent;
 
@@ -67,7 +69,7 @@ public class Enemy : MonoBehaviour
             print("attack");
 
             chasing = true;
-
+            Player.TakeDamage(DoDamage);
             agent.SetDestination(player.transform.position);
 
         }
