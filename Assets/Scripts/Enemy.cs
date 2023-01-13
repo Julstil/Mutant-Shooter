@@ -26,10 +26,42 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        //speed = agent.speed;
     }
     void Update()
     {
-        agent.SetDestination(patroling[currentPoint].position);
+        //agent.SetDestination(patroling[currentPoint].position);
+
+        distancePlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        //Eftersom den ska kunna gå tillbaka till att jaga, aka att speed inte ska vara 0 så har vi gjort den här if-satsen
+        if (chasing == true)
+        {
+            /*print("Tjena");*/
+            agent.speed = 6;
+        }
+        else
+        {
+            /*print("stilla");*/
+            agent.speed = 1;
+        }
+
+        if (distancePlayer < normalDistance)
+        {
+            print("attack");
+
+            chasing = true;
+
+            agent.SetDestination(player.transform.position);
+            
+
+        }
+        else if (distancePlayer > normalDistance)
+        {
+            chasing = false;
+            agent.SetDestination(patroling[currentPoint].position);
+            print("Patrullering");
+        }
 
 #if false
         distancePlayer = Vector3.Distance(transform.position, player.transform.position);
