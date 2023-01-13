@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     //Edvin lägger in damage - EN
     public int health = 200;
     public int DoDamage = 20;
-    Player Player;
+    public Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
 
     NavMeshAgent agent;
 
@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
 
         if (distancePlayer < normalDistance)
         {
+            //Om avståndet mellan spelaren och enemyn är mindre än enemyns räckhåll så ska den börja jaga playern
+            
             print("jaga");
 
             chasing = true;
@@ -58,7 +60,7 @@ public class Enemy : MonoBehaviour
         else if (distancePlayer > normalDistance)
         {
             chasing = false;
-
+            //Här ska den gå mot positionen listan patroling är på
             agent.SetDestination(patroling[currentPoint].position);
 
             print("Patrullering");
@@ -66,6 +68,7 @@ public class Enemy : MonoBehaviour
 
         if (distancePlayer < attackDistance)
         {
+            //Om attackDistance är mindre än räckhållet mellan enemyn och playern så 
             print("attack");
 
             chasing = true;
