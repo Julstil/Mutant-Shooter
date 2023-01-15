@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     public Transform[] patroling;
     int currentPoint;
 
+    public Animator anim;
+
     //Edvin lägger in damage - EN
     public int health = 200;
     public int DoDamage = 20;
@@ -53,7 +55,7 @@ public class Enemy : MonoBehaviour
             print("jaga");
 
             chasing = true;
-
+            //anim.SetBool("", true);
             agent.SetDestination(player.transform.position);
 
         }
@@ -70,6 +72,8 @@ public class Enemy : MonoBehaviour
         {
             //Om attackDistance är mindre än räckhållet mellan enemyn och playern så 
             print("attack");
+
+            anim.SetBool("Attack", true);
 
             chasing = true;
             Player.TakeDamage(DoDamage);
