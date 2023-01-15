@@ -79,6 +79,12 @@ public class Enemy : MonoBehaviour
             Player.TakeDamage(DoDamage);
             agent.SetDestination(player.transform.position);
 
+        }else if(distancePlayer > attackDistance && distancePlayer < normalDistance)
+        {
+            //Om man inte är i attack distance men ändå nära nog för att jaga ska animationen kunna gå tillbaka till att jaga
+            anim.SetBool("Attack", false);
+            anim.SetBool("Run", true);
+            print("running again");
         }
 
 #if false
