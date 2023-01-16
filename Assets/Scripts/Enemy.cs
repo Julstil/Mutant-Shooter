@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //speed = agent.speed;
     }
     void Update()
