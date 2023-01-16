@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - PatrolPoints
-  - Computer
   - Enemy
   - Interactable
   - pickUp
   - Gun
+  - interactable
   layers:
   - Default
   - TransparentFX

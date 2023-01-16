@@ -1,32 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class throwNade : MonoBehaviour
 {
     /*Av Edvin
      * This script is made to be able to throw the grenade - EN
      */
 
-    public float throwRate = 10;
+    public float throwRate = 1.5f;
     float throwRateTime;
     float savethrowRate;
     public float throwForce = 40;
     public float farFromPlayer = -1;
     public GameObject grenadePrefab;
 
+    int currentAmountNade;
+    public int maxNadeAmount = 2;
+    bool newNade;
+    public Text Nade;
+
     private void Start()
     {
         savethrowRate = throwRate;
+        currentAmountNade = 1;
     }
     // Update is called once per frame
     void Update()
     {
-        throwRateTime += Time.deltaTime;
-        if (Input.GetButtonDown("Fire2") && throwRate <= throwRateTime)
+        Nade.text = "Nade " + currentAmountNade + "/" + maxNadeAmount;
+
+        if (Input.GetButtonDown("Fire2") &&  currentAmountNade > 0)
         {
+            currentAmountNade--;
             ThrowGrenade();
-            throwRateTime = throwRate;
-            throwRate = throwRate + savethrowRate;
+            newNade = true;
+        }
+
+        if (newNade)
+        {
+            throwRateTime += Time.deltaTime;
+            if (throwRate <= throwRateTime)
+            {
+                throwRateTime = throwRate;
+                throwRate = throwRate + savethrowRate;
+                if (currentAmountNade <= 0 && maxNadeAmount > 0)
+                {
+                    currentAmountNade++;
+                    maxNadeAmount--;
+                }
+
+                newNade = false;
+            }
+        }
+    }
+
+
+    public void OutsideNade(int outsideNade)
+    {
+        maxNadeAmount += outsideNade;
+        if (currentAmountNade <= 0)
+        {
+            currentAmountNade++;
+            maxNadeAmount--;
         }
     }
 

@@ -18,6 +18,7 @@ public class movement : MonoBehaviour
     public GameObject Gun;
     public float crouchSpeed;
     bool cancrouch;
+    bool hasCrouched;
 
     [Header("Sprint")]
     public KeyCode sprint;
@@ -72,6 +73,7 @@ public class movement : MonoBehaviour
         if (Input.GetKeyDown(sprint))
         {
             cancrouch = false;
+            hasCrouched = false;
             speed = sprintSpeed;
             Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, -80.367f);
             gun.enabled = false;
@@ -94,12 +96,14 @@ public class movement : MonoBehaviour
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
                 Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
                 speed = crouchSpeed;
+                hasCrouched = true;
             }
-            else if (Input.GetKeyUp(crouch))
+            else if (Input.GetKeyUp(crouch) && hasCrouched)
             {
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
                 Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
                 speed = saveSpeed;
+                hasCrouched = false;
             }
         }
         else
