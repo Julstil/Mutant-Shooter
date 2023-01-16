@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 3440594253208997770}
   - component: {fileID: 3440594253208997761}
   - component: {fileID: 3440594253208997771}
+  - component: {fileID: 883159983874171413}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3440594253208997760}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ab4becb4c9a2764cbf6b74e9dd23981, type: 3}
   m_Name: 
@@ -295,6 +296,31 @@ MonoBehaviour:
   pressButtenText: {fileID: 0}
   img: {fileID: 0}
   openDoor: 101
+  doorsOpen: 0
+--- !u!114 &883159983874171413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440594253208997760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abef755527fa634da1cb8d2fee2419c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 250
+  lowHealth: 75
+  healthbar: {fileID: 0}
+  fill: {fileID: 0}
+  lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  normalHealth: {r: 1, g: 1, b: 1, a: 1}
+  background: {fileID: 0}
+  backgroundHealth: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 0.61960787}
+  backgroundLowHealth: {r: 1, g: 0.46274513, b: 0.46274513, a: 0.61960787}
+  gotHitImage: {fileID: 0}
+  gotHitImageVisability: 0.8
+  gotHitImageDissapear: 0.01
 --- !u!1 &3440594253225433773
 GameObject:
   m_ObjectHideFlags: 0
