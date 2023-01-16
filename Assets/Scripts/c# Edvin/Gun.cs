@@ -15,6 +15,7 @@ public class Gun : MonoBehaviour
     public float fireRate = 15;
     public float bulletSpeed = 100;
     public float impactForce = 50;
+    public string movable;
 
     [HideInInspector]
     public float nextTimeToFire = 0;
@@ -134,7 +135,7 @@ public class Gun : MonoBehaviour
             }
             else { }
 
-            if (hit.rigidbody != null && hit.transform.tag == "Interactable")
+            if (hit.rigidbody != null && hit.transform.tag == movable)
             {
                 hit.rigidbody.AddForce(-hit.normal, ForceMode.Impulse);
             }

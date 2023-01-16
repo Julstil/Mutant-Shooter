@@ -6,6 +6,9 @@ using UnityEngine.Animations;
 public class door : MonoBehaviour
 {
     public Animator DoorsOpen;
+    public float AnimTimefps;
+    float addAnimTime;
+    bool stopAnim;
 
     computerinteraction computerinteraction;
 
@@ -16,6 +19,7 @@ public class door : MonoBehaviour
         DoorsOpen = transform.GetComponentInParent<Animator>();
         computerinteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<computerinteraction>();
 
+        stopAnim = false;
         DoorsOpen.enabled = false;
     }
 
@@ -24,10 +28,21 @@ public class door : MonoBehaviour
     {
         if (computerinteraction.doorsOpen)
         {
+            addAnimTime += Time.deltaTime;
             print(computerinteraction.doorsOpen);
             DoorsOpen.enabled = true;
-            computerinteraction.doorsOpen = false;
+            if (addAnimTime >= AnimTimefps)
+            {
+                DoorsOpen.enabled = false;
+                stopAnim = true;
+                addAnimTime = 0;
+            }
         }
-        
+
+        if (stopAnim)
+        {
+            computerinteraction.doorsOpen = false;
+            stopAnim = false;
+        }
     }
 }
