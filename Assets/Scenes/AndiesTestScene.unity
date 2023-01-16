@@ -7912,7 +7912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3440594253940024549}
-  - component: {fileID: 3440594253940024548}
+  - component: {fileID: 3440594253940024540}
   - component: {fileID: 3440594253940024539}
   - component: {fileID: 3440594253940024550}
   m_Layer: 0
@@ -7930,7 +7930,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3440594253940024538}
   m_Enabled: 1
---- !u!20 &3440594253940024548
+--- !u!20 &3440594253940024540
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7958,7 +7958,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -8190,11 +8190,19 @@ MonoBehaviour:
   bulletSpeed: 100
   impactForce: 5000
   nextTimeToFire: 0
-  myCam: {fileID: 3440594253940024548}
+  myCam: {fileID: 0}
   impactEffect: {fileID: 1891972527774278, guid: d7ea492a96404194ba5a58ae7402f2a1,
     type: 3}
   muzzleFlash: {fileID: 198000012942003240, guid: bfdcd686b091c6540aac584d5a6cef26,
     type: 3}
+  extraAmmo: 0
+  maxExtraAmmo: 50
+  Reload: 0
+  maxAmmo: 6
+  textAmmo: {fileID: 0}
+  reloadTime: 5
+  offset: 2
+  posReloadPosZ: 0
   Enemy: {fileID: 0}
 --- !u!4 &3440594254989706104
 Transform:
@@ -8301,7 +8309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab4becb4c9a2764cbf6b74e9dd23981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 3440594253940024548}
+  playerCamera: {fileID: 0}
   distanceFromComputer: 2
   cumputerTag: Computer
   pressButtenText: {fileID: 0}
