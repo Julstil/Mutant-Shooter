@@ -8,6 +8,8 @@ TagManager:
   - Interactable
   - Gun
   - Moveable
+  - Enemy
+  - PatrolPoints
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Floor
   - 
   - 
   - 
