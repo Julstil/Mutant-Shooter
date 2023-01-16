@@ -13,11 +13,12 @@ public class NadeExplotion : MonoBehaviour
     public float explotianRadius = 3;
     public int NadeDamage = 60;
     public GameObject explosionEffect;
-    public float dissapear = 1;
-
+    public float dissapear = 0.01f;
+    
     [Header("Explotion force")]
     public float explotionForce;
-
+    public float explosionDissapear = 1;
+    
     Enemy enemy;
     bool hasExploded = false;
 
@@ -41,8 +42,8 @@ public class NadeExplotion : MonoBehaviour
 
     void Explode()
     {
-        ParticleSystem sys = Instantiate(explosionEffect, transform.position, Quaternion.Euler(Vector3.up)).GetComponent<ParticleSystem>();//skapar particlesystem - EN
-        sys.Play(); //spelar particlesystem - EN
+        GameObject sys = Instantiate(explosionEffect, transform.position, Quaternion.Euler(Vector3.up));//skapar particlesystem - EN
+        sys.GetComponent<ParticleSystem>().Play(); //spelar particlesystem - EN
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explotianRadius); //skapar en erray av colliders inom explotions radien - EN
 
@@ -63,7 +64,7 @@ public class NadeExplotion : MonoBehaviour
         //För varje colliders spelare som har samma tag som spelaren som kastade granaten ska healas med inten healThisMutch - EN
 
         hasExploded = true;
-        Destroy(sys, dissapear);
+        Destroy(sys, explosionDissapear);
         Destroy(gameObject, dissapear);
     }
 }

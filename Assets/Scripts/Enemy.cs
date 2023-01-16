@@ -23,13 +23,16 @@ public class Enemy : MonoBehaviour
     //Edvin lägger in damage - EN
     public int health = 200;
     public int DoDamage = 20;
-    public Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
+    Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
+    [Range(0, 100)]public float dropAmmoChance = 80;
+    public GameObject GODropAmmo;
 
     NavMeshAgent agent;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         //speed = agent.speed;
     }
     void Update()
@@ -166,6 +169,12 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         print("Enemy Dead");
+
+        var dropAmmo = Random.Range(0, 100);
+        if (dropAmmo <= dropAmmoChance)
+        {
+            //Instantiate(GODropAmmo, transform);
+        }
         //Ni får fylla i mer här sen - EN
     }
 }

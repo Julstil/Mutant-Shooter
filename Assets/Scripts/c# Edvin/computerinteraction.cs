@@ -15,10 +15,16 @@ public class computerinteraction : MonoBehaviour
     public Text pressButtenText;
     public Image img;
     public KeyCode openDoor;
+    [HideInInspector]
+    public bool doorsOpen = false;
 
+    door door;
     // Start is called before the first frame update
     void Start()
     {
+        door = GameObject.FindGameObjectWithTag(cumputerTag).GetComponent<door>();
+        doorsOpen = false;
+
         pressButtenText.text = "press " + openDoor + " to open the door";
     }
 
@@ -33,14 +39,16 @@ public class computerinteraction : MonoBehaviour
                 pressButtenText.enabled = true;
                 if (Input.GetKeyDown(openDoor))
                 {
-                    GetComponent<door>().doorsOpen = true;
+                    //print("We here");
+                    doorsOpen = true;
+                    //print(door.doorsOpen);
                 }
             }
-            else
-            {
-                img.enabled = false;
-                pressButtenText.enabled = false;
-            }
+        }
+        else
+        {
+            img.enabled = false;
+            pressButtenText.enabled = false;
         }
     }
 }

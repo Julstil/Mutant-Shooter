@@ -148,6 +148,11 @@ public class Gun : MonoBehaviour
     public void OutsideAmmo(int outsideAmmo)
     {
         extraAmmo += outsideAmmo;
+
+        if (extraAmmo > maxExtraAmmo)
+        {
+            extraAmmo = maxExtraAmmo;
+        }
     }
 
     IEnumerator Reaload()
