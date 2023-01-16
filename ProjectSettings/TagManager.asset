@@ -4,16 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PatrolPoints
-  - Enemy
-  - Interactable
   - pickUp
+  - Interactable
   - Gun
-<<<<<<< Updated upstream
-  - interactable
-=======
-  - floor
->>>>>>> Stashed changes
+  - Moveable
   layers:
   - Default
   - TransparentFX
@@ -23,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - floor
-  - Player
+  - 
+  - 
   - 
   - 
   - 
