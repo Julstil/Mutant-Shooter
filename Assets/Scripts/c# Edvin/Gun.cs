@@ -130,9 +130,17 @@ public class Gun : MonoBehaviour
 
             if (enemy != null && hit.transform.tag == Enemy.tag)
             {
+                //Playern träffar sin egna collider när den inte är på trigger
+                print("hit enemy");
                 enemy.TakeDamage(damage);
             }
             else { }
+            /*if(gameObject.transform.tag == "Enemy")
+            {
+                //Playern träffar sin egna collider när den inte är på trigger
+                print("hit enemy");
+                enemy.TakeDamage(damage);
+            }*/
 
             if (hit.rigidbody != null && hit.transform.tag == "Interactable")
             {

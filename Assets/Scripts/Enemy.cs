@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
 
         distancePlayer = Vector3.Distance(transform.position, player.transform.position);
 
+
         //Eftersom den ska kunna gå tillbaka till att jaga, aka att speed inte ska vara 0 så har vi gjort den här if-satsen
         if (chasing == true)
         {
@@ -147,7 +148,7 @@ public class Enemy : MonoBehaviour
         if(collider.gameObject.tag == "PatrolPoints")
         {
             currentPoint++;
-            print("point nr: " + currentPoint);
+            //print("point nr: " + currentPoint);
 
             if(currentPoint > patroling.Length -1)
             {//Om den nuvarande positionen är lika mycket som patrull listan (är på position 3) så ska den gå om
@@ -160,6 +161,7 @@ public class Enemy : MonoBehaviour
     {
         health -= Damage;
         anim.SetBool("Damage", true);
+        print("pang pang");
         if (health <= 0)
         {
             Die(); //Sätter igång die funktionen - EN
