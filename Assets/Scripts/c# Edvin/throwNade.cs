@@ -28,7 +28,7 @@ public class throwNade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Nade.text = "Nade " + currentAmountNade + "/" + maxNadeAmount;
+        Nade.text = currentAmountNade + "/" + maxNadeAmount;
 
         if (Input.GetButtonDown("Fire2") &&  currentAmountNade > 0)
         {

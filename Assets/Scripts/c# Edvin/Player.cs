@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int health = 250;
     public int lowHealth = 75;
     int maxHealth;
+    public Text healthNumber;
 
     [Header("Slider")]
     public Slider healthbar;
@@ -39,12 +40,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthNumber.text = ""+ health;
         healthbar.value = health;
 
         if (healthbar.value <= lowHealth)
         {
             fill.color = lowHealthColor;
             background.color = backgroundLowHealth;
+            healthNumber.color = lowHealthColor;
         }
         else
         {

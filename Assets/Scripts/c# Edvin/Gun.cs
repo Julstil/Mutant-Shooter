@@ -64,7 +64,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        textAmmo.text = "Ammo " + Ammo + "/" + extraAmmo;
+        textAmmo.text = Ammo + "/" + extraAmmo;
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && Ammo > 0 && canShoot)
         {
             nextTimeToFire = Time.time + 1 / fireRate; //Skapar en timer på hur långt tid mellan varje skott - EN
