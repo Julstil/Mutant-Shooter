@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int Damage)
     {
         health -= Damage;
-
+        anim.SetBool("Damage", true);
         if (health <= 0)
         {
             Die(); //Sätter igång die funktionen - EN
