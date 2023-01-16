@@ -5,8 +5,7 @@ using UnityEngine.Animations;
 
 public class door : MonoBehaviour
 {
-    public Animator LeftDoor;
-    public Animator RightDoor;
+    public Animator DoorsOpen;
 
     computerinteraction computerinteraction;
 
@@ -14,12 +13,10 @@ public class door : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LeftDoor = transform.GetComponentInChildren<Animator>();
-        RightDoor = transform.GetComponentInChildren<Animator>();
+        DoorsOpen = transform.GetComponentInParent<Animator>();
         computerinteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<computerinteraction>();
 
-        LeftDoor.enabled = false;
-        RightDoor.enabled = false;
+        DoorsOpen.enabled = false;
     }
 
     // Update is called once per frame
@@ -28,8 +25,7 @@ public class door : MonoBehaviour
         if (computerinteraction.doorsOpen)
         {
             print(computerinteraction.doorsOpen);
-            LeftDoor.enabled = true;
-            RightDoor.enabled = true;
+            DoorsOpen.enabled = true;
             computerinteraction.doorsOpen = false;
         }
         
