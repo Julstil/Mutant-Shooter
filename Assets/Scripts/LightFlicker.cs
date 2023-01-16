@@ -46,7 +46,6 @@ public class LightFlicker : MonoBehaviour
             metalRoof[i].gameObject.SetActive(false);
             lightRoof[i].gameObject.SetActive(true);
         }
-        print("On");
     }
 
     private void LampOff() //Stänger av alla lampor
@@ -57,8 +56,6 @@ public class LightFlicker : MonoBehaviour
             metalRoof[i].gameObject.SetActive(true);
             lightRoof[i].gameObject.SetActive(false);
         }
-        
-        print("Off");
     }
 
 }

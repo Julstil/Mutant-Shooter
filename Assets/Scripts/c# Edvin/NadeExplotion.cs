@@ -55,7 +55,7 @@ public class NadeExplotion : MonoBehaviour
                 enemy.TakeDamage(NadeDamage);
             }
             else { }
-            if (RigidBody)
+            if (RigidBody && RigidBody.transform.tag != "pickUp")
             {
                 RigidBody.AddExplosionForce(explotionForce, transform.position, explotianRadius);
             }
