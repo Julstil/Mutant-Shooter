@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
         }
 
         //Allt under här inom Update är bara för att kolla så att koden funkar och ska raderas - EN
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             TakeDamage(20);
         }
