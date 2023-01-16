@@ -9,7 +9,11 @@ TagManager:
   - Interactable
   - pickUp
   - Gun
+<<<<<<< Updated upstream
   - interactable
+=======
+  - floor
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
