@@ -224,10 +224,6 @@ public class Enemy : MonoBehaviour
             Die(); //Sätter igång die funktionen - EN
         }
 
-        /*if (!anim.IsInTransition(0))
-        {
-            print("Its done");
-        }*/
     }
 
     public void LoopEnd()

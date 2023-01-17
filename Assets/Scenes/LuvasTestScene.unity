@@ -604,7 +604,9 @@ MonoBehaviour:
   animatorList:
   - {fileID: 1247349505}
   currentAnim: 0
-  boolList: 00000000
+  animator: {fileID: 1247349505}
+  animationClip: {fileID: 7400000, guid: 8e17655a346e5ae408cf9ee499073ed0, type: 2}
+  boolList: 
 --- !u!4 &1824618054
 Transform:
   m_ObjectHideFlags: 0
