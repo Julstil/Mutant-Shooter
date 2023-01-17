@@ -157,6 +157,18 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &172215356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4896582731915154443, guid: a46a153af766c0b43b816f8f6730e6c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350409420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419188683
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  enemy: {fileID: 0}
   normalDistance: 3
   attackDistance: 1
   speed: 3
@@ -326,10 +339,10 @@ MonoBehaviour:
   - {fileID: 638719731}
   - {fileID: 753104236}
   anim: {fileID: 0}
+  hurtAnimClip: {fileID: 0}
   health: 200
   DoDamage: 20
   dropAmmoChance: 80
-  GODropAmmo: {fileID: 0}
 --- !u!1 &546312453
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +417,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546312453}
   m_CullTransparentMesh: 0
+--- !u!1 &548223912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3440594253208997760, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 916615232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &582170826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 970a6d3a81429b64892167bc0ca02d62,
+    type: 3}
+  m_PrefabInstance: {fileID: 2098075836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &582170828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582170826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e843482f3119fcc4b8c3aa83b486273a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  fireRate: 1.5
+  bulletSpeed: 100
+  impactForce: 50
+  movable: 
+  nextTimeToFire: 0
+  myCam: {fileID: 925424403}
+  impactEffect: {fileID: 7155318711949766445, guid: d1d1039c19d2ab64a8cd26b32eb65150,
+    type: 3}
+  muzzleFlash: {fileID: 198000012942003240, guid: bfdcd686b091c6540aac584d5a6cef26,
+    type: 3}
+  extraAmmo: 18
+  maxExtraAmmo: 50
+  Reload: 114
+  maxAmmo: 6
+  textAmmo: {fileID: 2060824659}
+  reloadTime: 5
+  offset: 2
+  posReloadPosZ: 0
+  Enemy: {fileID: 0}
 --- !u!1 &638719729
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,11 +844,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 883159983874171413, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 1132764496}
+    - target: {fileID: 883159983874171413, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 1082320545}
+    - target: {fileID: 883159983874171413, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 1987072133}
+    - target: {fileID: 883159983874171413, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: gotHitImage
+      value: 
+      objectReference: {fileID: 172215356}
+    - target: {fileID: 883159983874171413, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: healthNumber
+      value: 
+      objectReference: {fileID: 1809684088}
     - target: {fileID: 3440594253208997760, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3440594253208997761, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: Gun
+      value: 
+      objectReference: {fileID: 582170826}
     - target: {fileID: 3440594253208997773, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -854,6 +942,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 916615232}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &925424403 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3440594254260452662, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 916615232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1082320545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4896582731284485055, guid: a46a153af766c0b43b816f8f6730e6c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350409420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1105852694
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +1026,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132764496 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4896582731674746826, guid: a46a153af766c0b43b816f8f6730e6c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350409420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1178296059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,6 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  enemy: {fileID: 0}
   normalDistance: 3
   attackDistance: 1
   speed: 2
@@ -1427,10 +1546,10 @@ MonoBehaviour:
   - {fileID: 638719731}
   - {fileID: 753104236}
   anim: {fileID: 0}
+  hurtAnimClip: {fileID: 0}
   health: 200
   DoDamage: 20
   dropAmmoChance: 80
-  GODropAmmo: {fileID: 0}
 --- !u!65 &1407355371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1461,7 +1580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1481679702
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1621,6 +1740,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809684088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6401700049567069623, guid: a46a153af766c0b43b816f8f6730e6c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350409420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832389108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,6 +1929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  enemy: {fileID: 0}
   normalDistance: 3
   attackDistance: 1
   speed: 4
@@ -1806,10 +1938,10 @@ MonoBehaviour:
   - {fileID: 638719731}
   - {fileID: 753104236}
   anim: {fileID: 1837990161}
+  hurtAnimClip: {fileID: 0}
   health: 200
   DoDamage: 20
   dropAmmoChance: 80
-  GODropAmmo: {fileID: 0}
 --- !u!95 &1837990161
 Animator:
   serializedVersion: 3
@@ -1965,6 +2097,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987072133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4896582732185198939, guid: a46a153af766c0b43b816f8f6730e6c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350409420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2002734628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2428,7 +2572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736551dd54e4f5d41977324d226cc2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 548223912}
+  enemy: {fileID: 2002734629}
   normalDistance: 3
   attackDistance: 1
   speed: 2
@@ -2437,10 +2582,11 @@ MonoBehaviour:
   - {fileID: 638719731}
   - {fileID: 753104236}
   anim: {fileID: 2002734630}
+  hurtAnimClip: {fileID: -6039235621738319110, guid: 8c32d806baa6625448b7a9cff89154be,
+    type: 3}
   health: 200
   DoDamage: 1
   dropAmmoChance: 80
-  GODropAmmo: {fileID: 0}
 --- !u!1 &2015399482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2676,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2060824659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4896582731195285264, guid: a46a153af766c0b43b816f8f6730e6c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350409420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090119564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,6 +3704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  enemy: {fileID: 0}
   normalDistance: 3
   attackDistance: 1
   speed: 4
@@ -3554,10 +3713,10 @@ MonoBehaviour:
   - {fileID: 638719731}
   - {fileID: 753104236}
   anim: {fileID: 7576103192425557002}
+  hurtAnimClip: {fileID: 0}
   health: 200
   DoDamage: 20
   dropAmmoChance: 80
-  GODropAmmo: {fileID: 0}
 --- !u!95 &7576103192425557002
 Animator:
   serializedVersion: 3

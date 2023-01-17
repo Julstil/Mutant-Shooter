@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     //Enemy pathfinding - Saga & Luva
     public GameObject player;
+    public GameObject enemy;
 
     float distancePlayer;
     public float normalDistance;
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
     int currentPoint;
 
     public Animator anim;
+    public AnimationClip hurtAnimClip;
 
     //Edvin lägger in damage - EN
     public int health = 200;
@@ -52,6 +54,18 @@ public class Enemy : MonoBehaviour
             agent.speed = 1;
         }
 
+        /*if (Input.GetKeyDown(KeyCode.L))
+        {
+            int Damage = 100;
+            health -= Damage;
+            anim.SetBool("Damage", true);
+            print("pang pang");
+
+            if (health <= 0)
+            {
+                Die(); //Sätter igång die funktionen - EN
+            }
+        }*/
         if (distancePlayer < normalDistance)
         {
             //Om avståndet mellan spelaren och enemyn är mindre än enemyns räckhåll så ska den börja jaga playern
@@ -181,10 +195,28 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    IEnumerator Hurt()
+    {
+        anim.SetBool("Damage", true);
+        yield return new WaitForSeconds(hurtAnimClip.length);
+        anim.SetBool("Damage", false);
+        print("hurt");
+    }
+
     public void TakeDamage(int Damage)
     {
         health -= Damage;
-        anim.SetBool("Damage", true);
+        StartCoroutine(Hurt());
+        /*if(health -= Damage)
+        {
+            anim.SetBool("Damage", true);
+        }
+        else
+        {
+            anim.SetBool("Damage", false);
+        }*/
+
+        
         print("pang pang");
 
         if (health <= 0)
@@ -192,10 +224,10 @@ public class Enemy : MonoBehaviour
             Die(); //Sätter igång die funktionen - EN
         }
 
-        if (!anim.IsInTransition(0))
+        /*if (!anim.IsInTransition(0))
         {
             print("Its done");
-        }
+        }*/
     }
 
     public void LoopEnd()
@@ -205,6 +237,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        Destroy(enemy);
         print("Enemy Dead");
 
         var dropAmmo = Random.Range(0, 100);
