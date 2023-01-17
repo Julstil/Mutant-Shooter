@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     //Enemy pathfinding - Saga & Luva
     public GameObject player;
+    public GameObject enemy;
 
     float distancePlayer;
     public float normalDistance;
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
     int currentPoint;
 
     public Animator anim;
+    public AnimationClip hurtAnimClip;
 
     //Edvin lägger in damage - EN
     public int health = 200;
@@ -52,6 +54,18 @@ public class Enemy : MonoBehaviour
             agent.speed = 1;
         }
 
+        /*if (Input.GetKeyDown(KeyCode.L))
+        {
+            int Damage = 100;
+            health -= Damage;
+            anim.SetBool("Damage", true);
+            print("pang pang");
+
+            if (health <= 0)
+            {
+                Die(); //Sätter igång die funktionen - EN
+            }
+        }*/
         if (distancePlayer < normalDistance)
         {
             //Om avståndet mellan spelaren och enemyn är mindre än enemyns räckhåll så ska den börja jaga playern
@@ -72,7 +86,7 @@ public class Enemy : MonoBehaviour
             print("Patrullering");
         }
 
-        if (distancePlayer < attackDistance)
+        if (distancePlayer <= attackDistance)
         {
             //Om attackDistance är mindre än räckhållet mellan enemyn och playern så 
             print("attack");
@@ -133,7 +147,7 @@ public class Enemy : MonoBehaviour
 
 #endif
     }
-    private void OnTriggerEnter(Collider collider)
+    /*private void OnCollisionEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
@@ -155,21 +169,71 @@ public class Enemy : MonoBehaviour
                 currentPoint = 0;
             }
         }
+    } */
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.tag == "Player")
+        {
+            //speed = 0; Den skrivs över av annan kod
+            //Lägga till skada vid playern här? 
+        }
+        else
+        {
+            speed = 5f;
+        }
+
+        if (collision.gameObject.tag == "PatrolPoints")
+        {
+            currentPoint++;
+            //print("point nr: " + currentPoint);
+
+            if (currentPoint > patroling.Length - 1)
+            {//Om den nuvarande positionen är lika mycket som patrull listan (är på position 3) så ska den gå om
+                currentPoint = 0;
+            }
+        }
+    }
+
+    IEnumerator Hurt()
+    {
+        anim.SetBool("Damage", true);
+        yield return new WaitForSeconds(hurtAnimClip.length);
+        anim.SetBool("Damage", false);
+        print("hurt");
     }
 
     public void TakeDamage(int Damage)
     {
         health -= Damage;
-        anim.SetBool("Damage", true);
+        StartCoroutine(Hurt());
+        /*if(health -= Damage)
+        {
+            anim.SetBool("Damage", true);
+        }
+        else
+        {
+            anim.SetBool("Damage", false);
+        }*/
+
+        
         print("pang pang");
+
         if (health <= 0)
         {
             Die(); //Sätter igång die funktionen - EN
         }
+
+    }
+
+    public void LoopEnd()
+    {
+        anim.SetBool("Damage", false);
     }
 
     public void Die()
     {
+        Destroy(enemy);
         print("Enemy Dead");
 
         var dropAmmo = Random.Range(0, 100);
