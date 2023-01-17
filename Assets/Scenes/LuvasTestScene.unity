@@ -1025,6 +1025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a45a69427cc6ff4083a3a49f41cb861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatorList:
+  - {fileID: 1247349505}
   currentPos: 0
 --- !u!4 &1824618054
 Transform:
