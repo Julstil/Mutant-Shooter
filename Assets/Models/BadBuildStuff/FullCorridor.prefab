@@ -2242,7 +2242,7 @@ GameObject:
   - component: {fileID: 8575906079894176442}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: interactable
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2287,6 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorsOpen: {fileID: 5884251751023990132}
+  AnimTimefps: 0
 --- !u!1 &7001058630288504299
 GameObject:
   m_ObjectHideFlags: 0

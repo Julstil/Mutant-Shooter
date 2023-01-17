@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     public int DoDamage = 20;
     Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
     [Range(0, 100)]public float dropAmmoChance = 80;
-    public GameObject GODropAmmo;
+    //public GameObject GODropAmmo;
 
     NavMeshAgent agent;
 

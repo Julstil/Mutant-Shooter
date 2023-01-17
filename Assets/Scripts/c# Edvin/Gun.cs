@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     [Header("Bullet stats")]
     public int damage = 10;
     public float range = 100;
-    public float fireRate = 15;
+    public float fireRate = 1.5f;
     public float bulletSpeed = 100;
     public float impactForce = 50;
     public string movable;
@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
 
     [Header("Reload")]
-    public int extraAmmo;
+    public int extraAmmo = 18;
     public int maxExtraAmmo = 50;
     public KeyCode Reload;
     public int maxAmmo = 6;
@@ -129,19 +129,12 @@ public class Gun : MonoBehaviour
 
             Enemy enemy = hit.transform.GetComponent<Enemy>();
 
-            if (enemy != null && hit.transform.tag == Enemy.tag)
+            if (enemy != null)
             {
                 //Playern träffar sin egna collider när den inte är på trigger
                 print("hit enemy");
                 enemy.TakeDamage(damage);
             }
-            else { }
-            /*if(gameObject.transform.tag == "Enemy")
-            {
-                //Playern träffar sin egna collider när den inte är på trigger
-                print("hit enemy");
-                enemy.TakeDamage(damage);
-            }*/
 
             if (hit.rigidbody != null && hit.transform.tag == movable)
             {
