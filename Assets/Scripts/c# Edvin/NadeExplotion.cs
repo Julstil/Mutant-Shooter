@@ -22,6 +22,11 @@ public class NadeExplotion : MonoBehaviour
     Enemy enemy;
     bool hasExploded = false;
 
+    private void Start()
+    {
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+    }
+
     // Update is called once per frame
     void Update()
     {
