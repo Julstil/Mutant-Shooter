@@ -1354,6 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 250
   lowHealth: 75
+  healthNumber: {fileID: 0}
   healthbar: {fileID: 4896582732018377779}
   fill: {fileID: 4896582731863590982}
   lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
