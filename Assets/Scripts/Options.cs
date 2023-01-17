@@ -13,8 +13,6 @@ public class Options : MonoBehaviour
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
-    public Text masterVolumeText;
-    public string masterParameter = "masterVol";
     public float masterVolume;
     public float temp;
     public Dropdown resolutionDropdown;
@@ -24,7 +22,7 @@ public class Options : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        masterSlider.value = PlayerPrefs.GetFloat(masterParameter);
+        masterSlider.value = PlayerPrefs.GetFloat("masterVol");
         musicSlider.value = PlayerPrefs.GetFloat("musicvolume");
         sfxSlider.value = PlayerPrefs.GetFloat("sfxvolume");
         int selectedScreenMode = PlayerPrefs.GetInt("SelectedScreenMode", 0);
@@ -52,9 +50,7 @@ public class Options : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        temp = (Mathf.Round(masterSlider.value + 100));
-        masterVolumeText.text = "Master Volume: " + temp + "%";
-        
+       
     }
 
 
@@ -101,7 +97,7 @@ public class Options : MonoBehaviour
     public void SetMasterLevel(float masterLvl)
     {
         master.SetFloat("masterVol", masterSlider.value);
-        PlayerPrefs.SetFloat(masterParameter, masterSlider.value);
+        PlayerPrefs.SetFloat("masterVol", masterSlider.value);
 
     }
     
