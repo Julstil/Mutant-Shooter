@@ -7,6 +7,7 @@ public class Animations : MonoBehaviour
     public Animator[] animatorList;
     public int currentAnim;
 
+    public bool[] boolList;
     
     void Start()
     {
@@ -32,6 +33,6 @@ public class Animations : MonoBehaviour
 
     public void LoopEnd()
     {
-        //animatorList[0].set
+        //animatorList[0].SetBool("LalA", isSinging) kan ändras med update
     }
 }
