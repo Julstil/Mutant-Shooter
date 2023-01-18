@@ -23,26 +23,29 @@ public class Animations : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             //currentAnim++;
-            LoopEnd();
             animatorList[0].SetBool("Press", true);
             animatorList[0].SetBool("Idle", false);
-            //StartCoroutine(LoopEnd());
+           // LoopEnd();
+            StartCoroutine(LoopEnd());
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
             animatorList[0].SetBool("Press", true);
             animatorList[currentAnim].SetBool("Idle", true);
+            //StartCoroutine(LoopEnd());
             /*LoopEnd();
             StartCoroutine(LoopEnd());*/
         }
     }
 
-    IEnumerable LoopEnd()
+    IEnumerator LoopEnd()
     {
+        print("press");
         //animatorList[0].SetBool("LalA", isSinging) kan ändras med update
         animator.SetBool("Press", true);
         yield return new WaitForSeconds(animationClip.length);
         animator.SetBool("Press", false);
-        print("press");
+        animator.SetBool("Idle", true);
+        //print("press");
     }
 }
