@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour
     bool startReload;
     public float offset = 2;
     float negReloadPosZ;
-    public float posReloadPosZ;
+    float posReloadPosZ;
     int shootCounter;
 
 

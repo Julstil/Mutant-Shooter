@@ -45,10 +45,8 @@ public class computerinteraction : MonoBehaviour
                 if (Input.GetKeyDown(openDoor))
                 {
                     var door = hitComputer.transform.gameObject.GetComponent<door>();
-                    //print("We here");
                     door.doorsOpen = true;
-                    //print(door.doorsOpen);
-                    StartCoroutine(LoopEnd());
+                    //StartCoroutine(LoopEnd());
                 }
             }
         }
