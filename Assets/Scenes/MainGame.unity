@@ -38431,6 +38431,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5139349218448171046, guid: dbba9b78d6041094dbe88bec06967232,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6974965fadd541d4f9c2e3d2f35e3e84, type: 2}
     - target: {fileID: 8253707946220289079, guid: dbba9b78d6041094dbe88bec06967232,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38490,6 +38495,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bossroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051481955036825216, guid: dbba9b78d6041094dbe88bec06967232,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051481955036825218, guid: dbba9b78d6041094dbe88bec06967232,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0711
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051481955036825218, guid: dbba9b78d6041094dbe88bec06967232,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.076
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbba9b78d6041094dbe88bec06967232, type: 3}
