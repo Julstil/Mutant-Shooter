@@ -315,6 +315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &689915032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3440594253208997773, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1850728888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &699564515 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4896582732437965470, guid: a46a153af766c0b43b816f8f6730e6c1,
@@ -351,6 +357,7 @@ GameObject:
   - component: {fileID: 1013119714}
   - component: {fileID: 1013119713}
   - component: {fileID: 1013119712}
+  - component: {fileID: 1013119716}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Enemy
@@ -432,6 +439,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1013119716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013119711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736551dd54e4f5d41977324d226cc2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  normalDistance: 0
+  attackDistance: 0
+  speed: 0
+  patroling: []
+  anim: {fileID: 0}
+  hurtAnimClip: {fileID: 0}
+  health: 200
+  DoDamage: 20
+  GODropAmmo: {fileID: 0}
+  dropAmmoChance: 80
+  dropNadeChance: 20
+  dropHealthChance: 80
 --- !u!1001 &1062439816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,6 +635,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1850728888}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1354948944 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3440594254260452663, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1850728888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1354948945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354948941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0548388bfebe04ba13672cc5ea6395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSens: 100
+  pb: {fileID: 689915032}
+  cam: {fileID: 1354948944}
 --- !u!114 &1354948946
 MonoBehaviour:
   m_ObjectHideFlags: 0

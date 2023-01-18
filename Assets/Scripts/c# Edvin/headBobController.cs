@@ -9,12 +9,12 @@ public class headBobController : MonoBehaviour
     [SerializeField, Range(0, 0.1f)] private float amplitude = 0.015f;
     [SerializeField, Range(0, 60)] private float frequency = 10;
     public float pointing = 15;
+    public float sprintAmplitude;
+    public float crouchAmplitude;
+    public float sprintFrequency;
+    public float crouchFrequency;
     float saveAmplitude;
-    float sprintAmplitude;
-    float crouchAmplitude;
     float saveFrequency;
-    float sprintFrequency;
-    float crouchFrequency;
 
     [SerializeField] Transform camera = null;
     [SerializeField] Transform cameraHolder = null;
@@ -29,11 +29,7 @@ public class headBobController : MonoBehaviour
     {
         movement = transform.GetComponentInParent<movement>();
         saveFrequency = frequency;
-        sprintFrequency = frequency * (movement.sprintSpeed / movement.speed);
-        crouchFrequency = frequency * (movement.crouchSpeed / movement.speed);
         saveAmplitude = amplitude;
-        sprintAmplitude = amplitude * (movement.sprintSpeed / movement.speed);
-        crouchAmplitude = amplitude * (movement.crouchSpeed / movement.speed);
     }
 
     // Update is called once per frame
