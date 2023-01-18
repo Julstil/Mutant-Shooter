@@ -2582,7 +2582,7 @@ MonoBehaviour:
   - {fileID: 638719731}
   - {fileID: 753104236}
   anim: {fileID: 2002734630}
-  hurtAnimClip: {fileID: -6039235621738319110, guid: 8c32d806baa6625448b7a9cff89154be,
+  hurtAnimClip: {fileID: -6039235621738319110, guid: 7f653a1d236bd114f99d4a97036c5fbc,
     type: 3}
   health: 200
   DoDamage: 1
