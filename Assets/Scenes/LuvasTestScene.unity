@@ -575,6 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1824618054}
   - component: {fileID: 1824618053}
+  - component: {fileID: 1824618055}
   m_Layer: 0
   m_Name: AnimationManager
   m_TagString: Untagged
@@ -610,6 +611,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1824618055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824618052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab4becb4c9a2764cbf6b74e9dd23981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  distanceFromComputer: 2
+  cumputerTag: 
+  pressButtenText: {fileID: 0}
+  img: {fileID: 0}
+  openDoor: 0
+  doorsOpen: 0
+  leftArmAnim: {fileID: 0}
+  animationClip: {fileID: 0}
 --- !u!1 &2144447865
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,5 +798,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftArmAnimations
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6234224095558519912, guid: 2f9ab50ff0c8c144fbfc1e4b50d21fc1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f9ab50ff0c8c144fbfc1e4b50d21fc1, type: 3}
