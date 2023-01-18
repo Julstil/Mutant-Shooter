@@ -18,15 +18,21 @@ public class computerinteraction : MonoBehaviour
     [HideInInspector]
     public bool doorsOpen = false;
 
-    // Start is called before the first frame update
+    public Animator leftArmAnim;
+    Animations animations;
+    public AnimationClip animationClip;
+
+
     void Start()
     {
         doorsOpen = false;
 
         pressButtenText.text = "press " + openDoor + " to open the door";
+
+        animations.GetComponent<Animations>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitComputer, distanceFromComputer))
@@ -42,6 +48,7 @@ public class computerinteraction : MonoBehaviour
                     //print("We here");
                     door.doorsOpen = true;
                     //print(door.doorsOpen);
+                    StartCoroutine(LoopEnd());
                 }
             }
         }
@@ -50,5 +57,14 @@ public class computerinteraction : MonoBehaviour
             img.enabled = false;
             pressButtenText.enabled = false;
         }
+    }
+    IEnumerator LoopEnd()
+    {
+        //Lägg till en if-sats för att göra det snyggare
+        leftArmAnim.SetBool("Press", true);
+        yield return new WaitForSeconds(animationClip.length);
+        leftArmAnim.SetBool("Press", false);
+        leftArmAnim.SetBool("Idle", true);
+        print("press");
     }
 }
