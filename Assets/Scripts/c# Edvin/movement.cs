@@ -12,6 +12,7 @@ public class movement : MonoBehaviour
     public float speed = 6;
     public float jumpheight = 12;
     float saveSpeed;
+    [HideInInspector] public Vector3 move;
 
     [Header("Crouching")]
     public KeyCode crouch;
@@ -27,7 +28,7 @@ public class movement : MonoBehaviour
     throwNade throwNade;
 
     [Header("Jump checks")]
-    bool isgrounded;
+    [HideInInspector] public bool isgrounded;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -59,7 +60,7 @@ public class movement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z; // Skapar två grid axlar som går i playerns x led och z led då origo är spelaren - EN
+        move = transform.right * x + transform.forward * z; // Skapar två grid axlar som går i playerns x led och z led då origo är spelaren - EN
         move *= speed; // multiplicerar sen med speed då x och z variablarna är lika med 1 (får den att föras fortarre i dessa led) - EN
         move.y = Rb.velocity.y; //hastigheten i y axeln är lika stor som den får frå rigidbodyns "insatta kod" - EN
         Rb.velocity = move; // rigidbodyns hastighet är lika med move variabeln - EN
