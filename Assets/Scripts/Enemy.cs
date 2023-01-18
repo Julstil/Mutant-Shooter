@@ -200,6 +200,7 @@ public class Enemy : MonoBehaviour
         anim.SetBool("Damage", true);
         yield return new WaitForSeconds(hurtAnimClip.length);
         anim.SetBool("Damage", false);
+        anim.SetBool("Run", true);
         print("hurt");
     }
 
