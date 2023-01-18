@@ -52,7 +52,7 @@ public class Gun : MonoBehaviour
     [HideInInspector]
     public GameObject Enemy;
 
-    private void Start()
+    public virtual void Start()
     {
         canShoot = true;
         Ammo = maxAmmo;
@@ -68,6 +68,7 @@ public class Gun : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && Ammo > 0 && canShoot)
         {
             nextTimeToFire = Time.time + 1 / fireRate; //Skapar en timer på hur långt tid mellan varje skott - EN
+            print(gameObject.name);
 
             shootsFired = shootsFired + reloadTime;
             Shoot();
@@ -147,7 +148,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void OutsideAmmo(int outsideAmmo)
+    public virtual void OutsideAmmo(int outsideAmmo)
     {
         extraAmmo += outsideAmmo;
 

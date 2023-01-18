@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorsOpen: {fileID: 5884251751023990132}
-  AnimTimefps: 0
+  DoorAnim: {fileID: 7400000, guid: 6c81fd69756cc7641b9fd92cb23ef64b, type: 2}
 --- !u!1 &7001058630288504299
 GameObject:
   m_ObjectHideFlags: 0

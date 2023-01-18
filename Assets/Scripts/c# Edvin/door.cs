@@ -6,43 +6,22 @@ using UnityEngine.Animations;
 public class door : MonoBehaviour
 {
     public Animator DoorsOpen;
-    public float AnimTimefps;
-    float addAnimTime;
-    bool stopAnim;
-
-    computerinteraction computerinteraction;
-
+    public AnimationClip DoorAnim;
+    [HideInInspector] public bool doorsOpen;
 
     // Start is called before the first frame update
     void Start()
     {
-        DoorsOpen = transform.GetComponentInParent<Animator>();
-        computerinteraction = GameObject.FindGameObjectWithTag("Player").GetComponent<computerinteraction>();
 
-        stopAnim = false;
-        DoorsOpen.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (computerinteraction.doorsOpen)
+        if (doorsOpen)
         {
-            addAnimTime += Time.deltaTime;
-            print(computerinteraction.doorsOpen);
-            DoorsOpen.enabled = true;
-            if (addAnimTime >= AnimTimefps)
-            {
-                DoorsOpen.enabled = false;
-                stopAnim = true;
-                addAnimTime = 0;
-            }
-        }
-
-        if (stopAnim)
-        {
-            computerinteraction.doorsOpen = false;
-            stopAnim = false;
+            DoorsOpen.SetTrigger("IsOpen");
+            doorsOpen = false;
         }
     }
 }
