@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addAmmo: 20
-  Ammo: 1
+  Ammo: 0
   addNade: 2
-  Nade: 1
+  Nade: 0
   addHealth: 75
   HealthPack: 0

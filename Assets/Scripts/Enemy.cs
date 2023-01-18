@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     //Enemy pathfinding - Saga & Luva
     public GameObject player;
-    public GameObject enemy;
 
     float distancePlayer;
     public float normalDistance;
@@ -26,7 +25,13 @@ public class Enemy : MonoBehaviour
     public int health = 200;
     public int DoDamage = 20;
     Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
+    pickUp PickUp;
+    public GameObject GODropAmmo;
+    int[] drop;
     [Range(0, 100)]public float dropAmmoChance = 80;
+    [Range(0, 100)]public float dropNadeChance = 20;
+    [Range(0, 100)]public float dropHealthChance = 80;
+
     //public GameObject GODropAmmo;
 
     NavMeshAgent agent;
@@ -35,6 +40,7 @@ public class Enemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+       // PickUp = Resources.Load("").GetType;// FindObjectOfType<pickUp>();
         //speed = agent.speed;
     }
     void Update()
@@ -97,7 +103,8 @@ public class Enemy : MonoBehaviour
             Player.TakeDamage(DoDamage);
             agent.SetDestination(player.transform.position);
 
-        }else if(distancePlayer > attackDistance && distancePlayer < normalDistance)
+        }
+        else if(distancePlayer > attackDistance && distancePlayer < normalDistance)
         {
             //Om man inte är i attack distance men ändå nära nog för att jaga ska animationen kunna gå tillbaka till att jaga
             anim.SetBool("Attack", false);
@@ -234,14 +241,41 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        Destroy(enemy);
+        
         print("Enemy Dead");
 
-        var dropAmmo = Random.Range(0, 100);
-        if (dropAmmo <= dropAmmoChance)
+        for (int i = 0; i < drop.Length; i++)
         {
-            //Instantiate(GODropAmmo, transform);
+            drop[i] = Random.Range(0, 100);
         }
+
+         
+        if (drop[0] <= dropAmmoChance)
+        {
+            PickUp = Instantiate(GODropAmmo, transform).GetComponent<pickUp>();
+            PickUp.Ammo = true;
+            PickUp.HealthPack = false;
+            PickUp.Nade = false;
+        }
+        
+        if (drop[1] <= dropNadeChance)
+        {
+            PickUp = Instantiate(GODropAmmo, transform).GetComponent<pickUp>();
+            PickUp.Ammo = false;
+            PickUp.HealthPack = true;
+            PickUp.Nade = false;
+        }
+        
+        if (drop[2] <= dropHealthChance)
+        {
+            PickUp = Instantiate(GODropAmmo, transform).GetComponent<pickUp>();
+            PickUp.Ammo = false;
+            PickUp.HealthPack = false;
+            PickUp.Nade = true;
+        }
+        
+
+        Destroy(gameObject);
         //Ni får fylla i mer här sen - EN
     }
 }
