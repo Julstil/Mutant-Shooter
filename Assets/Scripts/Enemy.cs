@@ -90,9 +90,9 @@ public class Enemy : MonoBehaviour
         {
             chasing = false;
             //Här ska den gå mot positionen listan patroling är på
-            agent.SetDestination(patroling[currentPoint].position);
+            //agent.SetDestination(patroling[currentPoint].position);
 
-            print("Patrullering");
+            print("Ingen patrullering just nu");
         }
 
         if (distancePlayer <= attackDistance)
