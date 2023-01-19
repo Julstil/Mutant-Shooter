@@ -9,6 +9,7 @@ TagManager:
   - pickUp
   - Interactable
   - Enemy
+  - Revolver
   layers:
   - Default
   - TransparentFX

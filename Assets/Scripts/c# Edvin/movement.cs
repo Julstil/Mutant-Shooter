@@ -24,7 +24,7 @@ public class movement : MonoBehaviour
     [Header("Sprint")]
     public KeyCode sprint;
     public float sprintSpeed;
-    Gun gun;
+    public Gun gun;
     throwNade throwNade;
 
     [Header("Jump checks")]
@@ -43,7 +43,6 @@ public class movement : MonoBehaviour
     void Start()
     {
         throwNade = GetComponentInChildren<throwNade>();
-        gun = GetComponentInChildren<Gun>();
         Rb = GetComponent<Rigidbody>();
         jump = transform.up * jumpheight;
         cancrouch = true;
@@ -76,16 +75,22 @@ public class movement : MonoBehaviour
             cancrouch = false;
             hasCrouched = false;
             speed = sprintSpeed;
-            Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, -80.367f);
-            gun.enabled = false;
+            if (gun != null && Gun != null)
+            {
+                Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, -80.367f);
+                gun.enabled = false;
+            }
             throwNade.enabled = false;
         }
         else if (Input.GetKeyUp(sprint))
         {
             cancrouch = true;
             speed = saveSpeed;
-            Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, 0);
-            gun.enabled = true;
+            if (gun != null && Gun != null)
+            {
+                Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, 0);
+                gun.enabled = true;
+            }
             throwNade.enabled = true;
         }
 
@@ -95,22 +100,31 @@ public class movement : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
-                Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
-                speed = crouchSpeed;
+                if (Gun != null)
+                {
+                    Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
+                    speed = crouchSpeed;
+                }
                 hasCrouched = true;
             }
             else if (Input.GetKeyUp(crouch) && hasCrouched)
             {
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
-                Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
-                speed = saveSpeed;
+                if (Gun != null)
+                {
+                    Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
+                    speed = saveSpeed;
+                }
                 hasCrouched = false;
             }
         }
         else
         {
             transform.localScale = new Vector3(transform.localScale.x, saveScaleY, transform.localScale.z);
-            Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, gunSaveScaleY, Gun.transform.localScale.z);
+            if (Gun != null)
+            {
+                Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, gunSaveScaleY, Gun.transform.localScale.z);
+            }
         }
     }
 }

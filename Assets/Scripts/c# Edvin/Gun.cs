@@ -36,14 +36,14 @@ public class Gun : MonoBehaviour
     public Text textAmmo;
     public float reloadTime = 5;
     //float[] reloadPoints = new float[reloadTime];
-    [HideInInspector] public bool canShoot;
-    [HideInInspector] public float adTime = 0;
-    [HideInInspector] public float shootsFired;
-    [HideInInspector] public bool startReload;
+    bool canShoot;
+    float adTime = 0;
+    float shootsFired;
+    bool startReload;
     public float offset = 2;
-    [HideInInspector] public float negReloadPosZ;
-    [HideInInspector] public float posReloadPosZ;
-    [HideInInspector] public int shootCounter;
+    float negReloadPosZ;
+    float posReloadPosZ;
+    int shootCounter;
     float nextCock;
     public float saveNextCock = 0.25f;
     bool canCock;
@@ -139,7 +139,7 @@ public class Gun : MonoBehaviour
                     extraAmmo = 0;
                 }
                 shootCounter = 0;
-
+                revolverCock.Play();
                 startReload = false;
             }
         }

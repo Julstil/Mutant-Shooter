@@ -16,31 +16,39 @@ public class pickUp : MonoBehaviour
     public int addHealth;
     public bool HealthPack = false;
 
-    private Gun gun;
     private throwNade throwNade;
     private Player player;
+    private newGun newGun;
 
     // Start is called before the first frame update
     void Start()
     {
-        gun = GameObject.FindGameObjectWithTag("Gun").GetComponent<Gun>();
+        newGun = GameObject.FindGameObjectWithTag("Revolver").GetComponent<newGun>();
         throwNade = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<throwNade>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
     private void OnTriggerEnter(Collider collision)
-    {
+    {        
         if (collision.CompareTag("Player"))
         {
+            movement movement = collision.GetComponent<movement>();
+            var gun = movement.Gun.GetComponent<Gun>();
             if (Ammo)
             {
-                if (gun.extraAmmo < gun.maxExtraAmmo)
+                if (newGun.weHaveRevolver || newGun.weHaveShotgun)
                 {
-                    gun.OutsideAmmo(addAmmo);
-                    Destroy(gameObject);
-                }      
+                    if (gun != null)
+                    {
+                        if (gun.extraAmmo < gun.maxExtraAmmo)
+                        {
+                            gun.OutsideAmmo(addAmmo);
+                            Destroy(gameObject);
+                        } 
+                    }
 
+                }
             }
 
             if (Nade)

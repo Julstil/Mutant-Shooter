@@ -218,12 +218,8 @@ MonoBehaviour:
   Shotgun: {fileID: 822766381}
   revolver: 0
   shotgun: shotgun
---- !u!108 &342826713 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5616786726993721467, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
+  weHaveRevolver: 0
+  weHaveShotgun: 0
 --- !u!1 &397256677
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,12 +354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &689915032 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3440594253208997773, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &699564515 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4896582732437965470, guid: a46a153af766c0b43b816f8f6730e6c1,
@@ -763,62 +753,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d23dcd12c5f766245be96aafdd02937d, type: 3}
---- !u!1 &1354948941 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3440594254260452616, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1354948944 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3440594254260452663, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1354948945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354948941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a0548388bfebe04ba13672cc5ea6395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSens: 100
-  pb: {fileID: 689915032}
-  cam: {fileID: 1354948944}
---- !u!114 &1354948946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354948941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df8a3d0d64fb1a47a605326978cffef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 342826713}
-  flashlight: 102
 --- !u!1 &1402567527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2855862259051376660, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1402567530 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4904672328613286263, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1402567531 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3100939886192367803, guid: 1f47cf8bc982233489f08cda077c725d,
     type: 3}
   m_PrefabInstance: {fileID: 1850728888}
   m_PrefabAsset: {fileID: 0}
@@ -833,6 +770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: addAmmo
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048244050586068664, guid: 819448c8e98fcf4449f1f6b64924b162,
+        type: 3}
+      propertyPath: Ammo
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7048244050586068665, guid: 819448c8e98fcf4449f1f6b64924b162,
         type: 3}
@@ -978,6 +920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: new revolver
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9525d28b451d1244dbc23e5aa7cb2e8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Revolver
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9525d28b451d1244dbc23e5aa7cb2e8c, type: 3}
 --- !u!1 &1512277552 stripped
@@ -1004,6 +951,8 @@ MonoBehaviour:
   Shotgun: {fileID: 822766381}
   revolver: gun
   shotgun: shotgun
+  weHaveRevolver: 0
+  weHaveShotgun: 0
 --- !u!65 &1512277554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1358,41 +1307,6 @@ PrefabInstance:
       propertyPath: textAmmo
       value: 
       objectReference: {fileID: 1292519199}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: fireRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: damage
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: spread
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: maxAmmo
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: maxExtraAmmo
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 793186431945833674, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: extraAmmo
-      value: 32
-      objectReference: {fileID: 0}
     - target: {fileID: 883159983874171413, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: healthbar
@@ -1423,21 +1337,6 @@ PrefabInstance:
       propertyPath: textAmmo
       value: 
       objectReference: {fileID: 1292519199}
-    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: revolverCock
-      value: 
-      objectReference: {fileID: 1402567531}
-    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: shotFired
-      value: 
-      objectReference: {fileID: 1402567530}
-    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: saveNextCock
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 1101749187775907353, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: m_TagString
@@ -1478,11 +1377,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3440594253208997761, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: Gun
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3440594253208997771, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: pressButtenText
@@ -1493,11 +1387,6 @@ PrefabInstance:
       propertyPath: img
       value: 
       objectReference: {fileID: 699564515}
-    - target: {fileID: 3440594253208997771, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: cumputerTag
-      value: Interactable
-      objectReference: {fileID: 0}
     - target: {fileID: 3440594253208997771, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: layer
@@ -1578,31 +1467,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5616786726993721467, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 9.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616786726993721467, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: m_Range
-      value: 5.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616786726993721467, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.69803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616786726993721467, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.994347
-      objectReference: {fileID: 0}
-    - target: {fileID: 5616786726993721467, guid: 1f47cf8bc982233489f08cda077c725d,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5636444896126504644, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: m_IsActive
@@ -1647,6 +1511,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612657166303349021, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gun
       objectReference: {fileID: 0}
     - target: {fileID: 6729977217634328576, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
