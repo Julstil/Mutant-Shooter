@@ -5,25 +5,36 @@ using UnityEngine;
 public class Boss : Enemy
 {
     int currentDeadHearts;
-    int maxDeadHearts = 4;
+    int maxDeadHearts = 3;
     public AnimationClip hurtHeartAnimC;
+    public GameObject vein;
+    public GameObject[] hearts = new GameObject[3];
+    public int[] healths = new int[3];
     
     public override void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            healths[i] = 300;
+            hearts[i].GetComponent<Enemy>().health = healths[i];
+        }
     }
 
     public override void Update()
     {
-        if(currentDeadHearts <= maxDeadHearts)
+        if(currentDeadHearts >= maxDeadHearts)
         {
-            print("Win :)");
+            Destroy(vein);
         }
+
+
     }
 
     public override void TakeDamage(int Damage)
     {
         base.TakeDamage(Damage);
+        
     }
 
     public override IEnumerator Hurt()

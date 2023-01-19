@@ -14,11 +14,14 @@ public class ingameMenu : MonoBehaviour
         creditsPanel.SetActive(false);
         settingsPanel.SetActive(false);
         ingameMenuPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void ReturnToGame()
     {
         ingameMenuPanel.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void Credits() // Öppnar credits - Ville
     {
@@ -59,6 +62,8 @@ public class ingameMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ingameMenuPanel.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.Confined;
         }
     }
 }
