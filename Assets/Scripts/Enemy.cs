@@ -24,7 +24,10 @@ public class Enemy : MonoBehaviour
     //Edvin lägger in damage - EN
     public int health = 200;
     public int DoDamage = 20;
-    Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
+    
+    [HideInInspector] 
+    public Player Player; //Glöm inte att referera den (lägga in det objekt som har den koden) -Saga
+    
     pickUp PickUp;
     public GameObject GODropAmmo;
     int[] drop;
@@ -36,14 +39,14 @@ public class Enemy : MonoBehaviour
 
     NavMeshAgent agent;
 
-    private void Start()
+    public virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
        // PickUp = Resources.Load("").GetType;// FindObjectOfType<pickUp>();
         //speed = agent.speed;
     }
-    void Update()
+    public virtual void Update()
     {
         //agent.SetDestination(patroling[currentPoint].position);
 
@@ -154,36 +157,12 @@ public class Enemy : MonoBehaviour
 
 #endif
     }
-    /*private void OnCollisionEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-        {
-            //speed = 0; Den skrivs över av annan kod
-            //Lägga till skada vid playern här? 
-        }
-        else
-        {
-            speed = 5f;
-        }
-
-        if(collider.gameObject.tag == "PatrolPoints")
-        {
-            currentPoint++;
-            //print("point nr: " + currentPoint);
-
-            if(currentPoint > patroling.Length -1)
-            {//Om den nuvarande positionen är lika mycket som patrull listan (är på position 3) så ska den gå om
-                currentPoint = 0;
-            }
-        }
-    } */
     private void OnCollisionEnter(Collision collision)
     {
 
         if (collision.gameObject.tag == "Player")
         {
             //speed = 0; Den skrivs över av annan kod
-            //Lägga till skada vid playern här? 
         }
         else
         {
@@ -202,7 +181,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator Hurt()
+    public virtual IEnumerator Hurt()
     {
         anim.SetBool("Damage", true);
         yield return new WaitForSeconds(hurtAnimClip.length);
@@ -211,7 +190,7 @@ public class Enemy : MonoBehaviour
         print("hurt");
     }
 
-    public void TakeDamage(int Damage)
+    public virtual void TakeDamage(int Damage)
     {
         health -= Damage;
         StartCoroutine(Hurt());
@@ -224,8 +203,6 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Damage", false);
         }*/
 
-        
-        print("pang pang");
 
         if (health <= 0)
         {
@@ -234,12 +211,12 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void LoopEnd()
+    /*public void LoopEnd()
     {
         anim.SetBool("Damage", false);
-    }
+    }*/
 
-    public void Die()
+    public virtual void Die()
     {
         
         print("Enemy Dead");
