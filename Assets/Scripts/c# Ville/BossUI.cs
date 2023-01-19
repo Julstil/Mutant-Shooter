@@ -15,9 +15,11 @@ public class BossUI : MonoBehaviour
     public Color bossHealth;
     public Image[] background = new Image[3];
     public Color backgroundHealth;
+    Boss boss;
     // Start is called before the first frame update
     void Start()
     {
+        boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
         for (int i = 0; i < health.Length; i++)
         {
             maxHealth = health[i];
@@ -50,7 +52,7 @@ public class BossUI : MonoBehaviour
        
         for (int i = 0; i < healthbar.Length; i++)
         {
-            healthbar[i].value = health[i];
+            healthbar[i].value = boss.healths[i];
         }
 
     }

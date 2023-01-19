@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 704205928264072877}
   m_Layer: 0
   m_Name: MutantHeart
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704205928264072875}
-  m_LocalRotation: {x: -0.63656884, y: -0.2739617, z: -0.28499144, w: 0.6621971}
+  m_LocalRotation: {x: -0.63656944, y: -0.27395916, z: -0.28498915, w: 0.6621986}
   m_LocalPosition: {x: 13.5, y: 4.93, z: -16.26}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
