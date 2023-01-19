@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : Enemy
 {
     int currentDeadHearts;
-    int maxDeadHearts = 3;
+   public int maxDeadHearts;
     public AnimationClip hurtHeartAnimC;
     public GameObject vein;
     public GameObject[] hearts = new GameObject[3];
