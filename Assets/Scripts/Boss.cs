@@ -23,13 +23,18 @@ public class Boss : Enemy
 
     public override void Update()
     {
-        if(currentDeadHearts >= maxDeadHearts)
+       /* if(currentDeadHearts >= maxDeadHearts)
+        {
+            Destroy(vein);
+        }*/
+        if(hearts.Length <= 0)
         {
             Destroy(vein);
         }
 
-
     }
+
+
 
     public override void TakeDamage(int Damage)
     {
