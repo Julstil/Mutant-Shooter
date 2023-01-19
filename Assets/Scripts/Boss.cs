@@ -5,10 +5,10 @@ using UnityEngine;
 public class Boss : Enemy
 {
     int currentDeadHearts;
-    int maxDeadHearts = 3;
+   public int maxDeadHearts;
     public AnimationClip hurtHeartAnimC;
     public GameObject vein;
-    public GameObject[] hearts = new GameObject[3];
+    public GameObject[] hearts = new GameObject[1];
     public int[] healths = new int[3];
     
     public override void Start()
@@ -23,13 +23,18 @@ public class Boss : Enemy
 
     public override void Update()
     {
-        if(currentDeadHearts >= maxDeadHearts)
+       /* if(currentDeadHearts >= maxDeadHearts)
+        {
+            Destroy(vein);
+        }*/
+        if(hearts.Length <= 0)
         {
             Destroy(vein);
         }
 
-
     }
+
+
 
     public override void TakeDamage(int Damage)
     {
