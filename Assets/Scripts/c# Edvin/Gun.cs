@@ -142,9 +142,13 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal, ForceMode.Impulse);
             }
 
-            GameObject ImpactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); //skapar paticlesystem - EN
-            ImpactGO.transform.parent = hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
-            Destroy(ImpactGO, 8);
+            if (enemy == null)
+            {
+                GameObject ImpactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); //skapar paticlesystem - EN
+                ImpactGO.transform.parent = hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
+                Destroy(ImpactGO, 8);
+            }
+
         }
     }
 
