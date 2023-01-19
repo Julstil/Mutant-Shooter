@@ -8,7 +8,7 @@ public class Boss : Enemy
    public int maxDeadHearts;
     public AnimationClip hurtHeartAnimC;
     public GameObject vein;
-    public GameObject[] hearts = new GameObject[3];
+    public GameObject[] hearts = new GameObject[1];
     public int[] healths = new int[3];
     
     public override void Start()
