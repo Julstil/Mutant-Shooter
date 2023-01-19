@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshairBlue: {fileID: 1768958823}
   crosshairRed: {fileID: 448027049}
-  Revolver: {fileID: 1866216203}
+  Revolver: {fileID: 1402567527}
   Shotgun: {fileID: 822766381}
   revolver: 0
   shotgun: shotgun
@@ -581,6 +581,7 @@ MonoBehaviour:
   hurtAnimClip: {fileID: 0}
   health: 200
   DoDamage: 20
+  Player: {fileID: 0}
   GODropAmmo: {fileID: 0}
   dropAmmoChance: 80
   dropNadeChance: 20
@@ -803,6 +804,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 342826713}
   flashlight: 102
+--- !u!1 &1402567527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2855862259051376660, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1850728888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1402567530 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4904672328613286263, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1850728888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1402567531 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3100939886192367803, guid: 1f47cf8bc982233489f08cda077c725d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1850728888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1475029409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -981,9 +1000,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshairBlue: {fileID: 1768958823}
   crosshairRed: {fileID: 448027049}
-  Revolver: {fileID: 1866216203}
+  Revolver: {fileID: 1402567527}
   Shotgun: {fileID: 822766381}
-  revolver: Pipe Revolver Pistol v8
+  revolver: gun
   shotgun: shotgun
 --- !u!65 &1512277554
 BoxCollider:
@@ -1399,6 +1418,26 @@ PrefabInstance:
       propertyPath: healthNumber
       value: 
       objectReference: {fileID: 1572173693}
+    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: textAmmo
+      value: 
+      objectReference: {fileID: 1292519199}
+    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: revolverCock
+      value: 
+      objectReference: {fileID: 1402567531}
+    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: shotFired
+      value: 
+      objectReference: {fileID: 1402567530}
+    - target: {fileID: 933858203510051534, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: saveNextCock
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1101749187775907353, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: m_TagString
@@ -1424,6 +1463,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2855862259051376660, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236363253559061166, guid: 1f47cf8bc982233489f08cda077c725d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3440594253208997760, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: m_Name
@@ -1433,7 +1482,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Gun
       value: 
-      objectReference: {fileID: 1866216203}
+      objectReference: {fileID: 0}
     - target: {fileID: 3440594253208997771, guid: 1f47cf8bc982233489f08cda077c725d,
         type: 3}
       propertyPath: pressButtenText
@@ -1631,12 +1680,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f47cf8bc982233489f08cda077c725d, type: 3}
---- !u!1 &1866216203 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6729977217634328576, guid: 1f47cf8bc982233489f08cda077c725d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1850728888}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1970915484 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4896582732640375371, guid: a46a153af766c0b43b816f8f6730e6c1,

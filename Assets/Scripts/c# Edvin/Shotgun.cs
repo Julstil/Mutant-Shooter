@@ -21,6 +21,7 @@ public class Shotgun : Gun
 
     public override void Shoot()
     {
+        shotFired.Play();
         for (int i = 0; i < pellets; i++)
         {
             if (Physics.Raycast(myCam.transform.position, myCam.transform.forward + new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread)), out hit, range))

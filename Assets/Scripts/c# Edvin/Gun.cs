@@ -32,18 +32,21 @@ public class Gun : MonoBehaviour
     public int maxExtraAmmo = 50;
     public KeyCode Reload;
     public int maxAmmo = 6;
-    int Ammo = 6;
+    [HideInInspector] public int Ammo = 6;
     public Text textAmmo;
     public float reloadTime = 5;
     //float[] reloadPoints = new float[reloadTime];
-    bool canShoot;
-    float adTime = 0;
-    float shootsFired;
-    bool startReload;
+    [HideInInspector] public bool canShoot;
+    [HideInInspector] public float adTime = 0;
+    [HideInInspector] public float shootsFired;
+    [HideInInspector] public bool startReload;
     public float offset = 2;
-    float negReloadPosZ;
-    float posReloadPosZ;
-    int shootCounter;
+    [HideInInspector] public float negReloadPosZ;
+    [HideInInspector] public float posReloadPosZ;
+    [HideInInspector] public int shootCounter;
+    float nextCock;
+    public float saveNextCock = 0.25f;
+    bool canCock;
 
 
     [HideInInspector]
@@ -52,6 +55,9 @@ public class Gun : MonoBehaviour
     [HideInInspector]
     public GameObject Enemy;
 
+    public AudioSource shotFired;
+    public AudioSource revolverCock;
+
     public virtual void Start()
     {
         canShoot = true;
@@ -59,11 +65,13 @@ public class Gun : MonoBehaviour
         reloadTime = reloadTime / maxAmmo;
         negReloadPosZ = transform.localPosition.z - offset;
         posReloadPosZ = transform.localPosition.z;
+        nextCock = 0;
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        
         textAmmo.text = Ammo + "/" + extraAmmo;
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && Ammo > 0 && canShoot)
         {
@@ -72,9 +80,23 @@ public class Gun : MonoBehaviour
 
             shootsFired = shootsFired + reloadTime;
             Shoot();
+            canCock = true;
             muzzleFlash.Play();
             Ammo--;
             shootCounter++;
+        }
+
+        if (canCock)
+        {
+            nextCock += Time.deltaTime;        
+            if (saveNextCock <= nextCock && revolverCock.isPlaying == false)
+            {
+                print("boom");
+
+                revolverCock.Play();
+                nextCock = 0;
+                canCock = false;
+            }
         }
 
         if (extraAmmo > 0)
@@ -86,6 +108,7 @@ public class Gun : MonoBehaviour
                 canShoot = false;
                 startReload = true;
             }
+
         }
 
         if (startReload)
@@ -124,11 +147,13 @@ public class Gun : MonoBehaviour
 
     public virtual void Shoot()
     {
+        shotFired.Play();
         if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, range))//skapar en raycast som kommer ut ifrån kameran - EN
         {
             print(hit.transform.name);
 
             Enemy enemy = hit.transform.GetComponent<Enemy>();
+            Boss boss = hit.transform.GetComponent<Boss>();
 
             if (enemy != null)
             {
@@ -149,6 +174,10 @@ public class Gun : MonoBehaviour
                 Destroy(ImpactGO, 8);
             }
 
+            if (boss != null)
+            {
+
+            }
         }
     }
 
