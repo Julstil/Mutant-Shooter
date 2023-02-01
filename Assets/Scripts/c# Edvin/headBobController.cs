@@ -6,13 +6,13 @@ public class headBobController : MonoBehaviour
 {
     [SerializeField] private bool enable;
 
-    [SerializeField, Range(0, 0.1f)] private float amplitude = 0.015f;
+    [SerializeField, Range(0, 0.02f)] private float amplitude = 0.015f;
     [SerializeField, Range(0, 60)] private float frequency = 10;
-    public float pointing = 15;
-    public float sprintAmplitude;
-    public float crouchAmplitude;
-    public float sprintFrequency;
-    public float crouchFrequency;
+    public float range = 100;
+    [SerializeField, Range(0, 0.02f)] private float sprintAmplitude;
+    [SerializeField, Range(0, 0.02f)] private float crouchAmplitude;
+    [SerializeField, Range(0, 60)] private float sprintFrequency;
+    [SerializeField, Range(0, 60)] private float crouchFrequency;
     float saveAmplitude;
     float saveFrequency;
 
@@ -23,6 +23,7 @@ public class headBobController : MonoBehaviour
     private Vector3 startPos;
 
     movement movement;
+    [HideInInspector] public RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
@@ -101,7 +102,13 @@ public class headBobController : MonoBehaviour
     private Vector3 FocusTarget()
     {
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + cameraHolder.localPosition.y, transform.position.z);
-        pos += cameraHolder.forward * pointing;
+
+        if(Physics.Raycast(camera.position, camera.forward, out hit, range))
+        {
+            float pointing = Vector3.Distance(camera.position, hit.point);
+            pos += cameraHolder.forward * pointing;   
+        }
+        
         return pos;
     }
 }

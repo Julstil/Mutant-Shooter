@@ -11,7 +11,6 @@ public class Gun : MonoBehaviour
 
     [Header("Bullet stats")]
     public int damage = 10;
-    public float range = 100;
     public float fireRate = 1.5f;
     public float bulletSpeed = 100;
     public float impactForce = 50;
@@ -48,18 +47,17 @@ public class Gun : MonoBehaviour
     public float saveNextCock = 0.25f;
     bool canCock;
 
-
-    [HideInInspector]
-    public RaycastHit hit;
-
     [HideInInspector]
     public GameObject Enemy;
 
     public AudioSource shotFired;
     public AudioSource revolverCock;
 
+    [HideInInspector] public headBobController headBob;
+
     public virtual void Start()
     {
+        headBob = GetComponentInParent<headBobController>();
         canShoot = true;
         Ammo = maxAmmo;
         reloadTime = reloadTime / maxAmmo;
@@ -81,7 +79,7 @@ public class Gun : MonoBehaviour
             shootsFired = shootsFired + reloadTime;
             Shoot();
             canCock = true;
-            muzzleFlash.Play();
+            muzzleFlash.Play(true);
             Ammo--;
             shootCounter++;
         }
@@ -148,12 +146,12 @@ public class Gun : MonoBehaviour
     public virtual void Shoot()
     {
         shotFired.Play();
-        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out hit, range))//skapar en raycast som kommer ut ifrån kameran - EN
+        if (Physics.Raycast(myCam.transform.position, myCam.transform.forward, out headBob.hit, headBob.range))//skapar en raycast som kommer ut ifrån kameran - EN
         {
-            print(hit.transform.name);
+            print(headBob.hit.transform.name);
 
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-            Boss boss = hit.transform.GetComponent<Boss>();
+            Enemy enemy = headBob.hit.transform.GetComponent<Enemy>();
+            Boss boss = headBob.hit.transform.GetComponent<Boss>();
 
             if (enemy != null)
             {
@@ -162,15 +160,15 @@ public class Gun : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
 
-            if (hit.rigidbody != null && hit.transform.tag == movable)
+            if (headBob.hit.rigidbody != null && headBob.hit.transform.tag == movable)
             {
-                hit.rigidbody.AddForce(-hit.normal, ForceMode.Impulse);
+                headBob.hit.rigidbody.AddForce(-headBob.hit.normal, ForceMode.Impulse);
             }
 
             if (enemy == null)
             {
-                GameObject ImpactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); //skapar paticlesystem - EN
-                ImpactGO.transform.parent = hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
+                GameObject ImpactGO = Instantiate(impactEffect, headBob.hit.point, Quaternion.LookRotation(headBob.hit.normal)); //skapar paticlesystem - EN
+                ImpactGO.transform.parent = headBob.hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
                 Destroy(ImpactGO, 8);
             }
 

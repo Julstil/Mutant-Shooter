@@ -111,12 +111,10 @@ MonoBehaviour:
   delay: 3
   explotianRadius: 3
   NadeDamage: 60
-  explosionEffect: {fileID: 1000013462590818, guid: bfdcd686b091c6540aac584d5a6cef26,
+  explosionEffect: {fileID: 1000013462590818, guid: e32f9e878a81f1647b72148974858855,
     type: 3}
   dissapear: 0.05
   explotionSound: {fileID: 4959355453126102362}
-  mesh: {fileID: 3334266589205170151}
-  collider: {fileID: 9180941960750873239}
   invissibleTime: 2
   explotionForce: 900
   explosionDissapear: 1

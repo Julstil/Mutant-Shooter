@@ -15,8 +15,8 @@ public class NadeExplotion : MonoBehaviour
     public GameObject explosionEffect;
     public float dissapear = 0.5f;
     public AudioSource explotionSound;
-    public MeshRenderer mesh;
-    public Collider collider;
+    MeshRenderer mesh;
+    Collider collider;
     public float invissibleTime;
     float adtime;
 
@@ -30,6 +30,8 @@ public class NadeExplotion : MonoBehaviour
 
     private void Start()
     {
+        collider = GetComponent<Collider>();
+        mesh = GetComponent<MeshRenderer>();
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
     }
 

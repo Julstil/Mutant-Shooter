@@ -22,6 +22,7 @@ public class ingameMenu : MonoBehaviour
         ingameMenuPanel.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void Credits() // Öppnar credits - Ville
     {

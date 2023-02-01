@@ -21,6 +21,7 @@ public class mouseLook : MonoBehaviour
     {
         // gör så att musen tas bort och sätts i spel kamerans mitt - Edvin N
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

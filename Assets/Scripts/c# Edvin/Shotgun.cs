@@ -24,9 +24,9 @@ public class Shotgun : Gun
         shotFired.Play();
         for (int i = 0; i < pellets; i++)
         {
-            if (Physics.Raycast(myCam.transform.position, myCam.transform.forward + new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread)), out hit, range))
+            if (Physics.Raycast(myCam.transform.position, myCam.transform.forward + new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread)), out headBob.hit, headBob.range))
             {
-                Enemy enemy = hit.transform.GetComponent<Enemy>();
+                Enemy enemy = headBob.hit.transform.GetComponent<Enemy>();
 
                 if (enemy != null)
                 {
@@ -35,13 +35,13 @@ public class Shotgun : Gun
                     enemy.TakeDamage(damage);
                 }
 
-                if (hit.rigidbody != null && hit.transform.tag == movable)
+                if (headBob.hit.rigidbody != null && headBob.hit.transform.tag == movable)
                 {
-                    hit.rigidbody.AddForce(-hit.normal, ForceMode.Impulse);
+                    headBob.hit.rigidbody.AddForce(-headBob.hit.normal, ForceMode.Impulse);
                 }
 
-                GameObject ImpactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)); //skapar paticlesystem - EN
-                ImpactGO.transform.parent = hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
+                GameObject ImpactGO = Instantiate(impactEffect, headBob.hit.point, Quaternion.LookRotation(headBob.hit.normal)); //skapar paticlesystem - EN
+                ImpactGO.transform.parent = headBob.hit.transform; //Parent av paticlesystemet blir samma som det man träffar så att ifall det flyttar på sig följer paticlesystemet med - EN
                 Destroy(ImpactGO, 8);
             }
         }

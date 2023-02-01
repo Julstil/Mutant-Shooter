@@ -29,7 +29,7 @@ public class computerinteraction : MonoBehaviour
 
         pressButtenText.text = "press " + openDoor + " to open the door";
 
-        animations.GetComponent<Animations>();
+        //animations.GetComponent<Animations>();
     }
 
     

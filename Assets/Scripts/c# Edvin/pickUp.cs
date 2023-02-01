@@ -73,6 +73,7 @@ public class pickUp : MonoBehaviour
 
             if (HealthPack)
             {
+                print("we got health back");
                 player.TakeHealing(addHealth);
                 Destroy(gameObject);
             }

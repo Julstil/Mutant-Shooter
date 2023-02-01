@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 
     [Header("Health")]
-    public int health = 250;
+    [Range(0, 250)] public int health = 250;
     public int lowHealth = 75;
     int maxHealth;
     public Text healthNumber;
@@ -31,7 +31,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = health;
+        maxHealth = 250;
+        //maxHealth = health;
         healthbar.maxValue = maxHealth;
         healthbar.value = maxHealth;
         damageTaken = true;

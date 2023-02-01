@@ -37,18 +37,19 @@ public class movement : MonoBehaviour
     Rigidbody Rb;
 
     float saveScaleY;
-    float gunSaveScaleY;
+    [HideInInspector] public float gunSaveScaleY;
+    newGun newGun;
 
     // Start is called before the first frame update
     void Start()
     {
+        newGun = GameObject.FindGameObjectWithTag("Revolver").GetComponent<newGun>();
         throwNade = GetComponentInChildren<throwNade>();
         Rb = GetComponent<Rigidbody>();
         jump = transform.up * jumpheight;
         cancrouch = true;
         saveSpeed = speed;
         saveScaleY = transform.localScale.y;
-        gunSaveScaleY = Gun.transform.localScale.y;
     }
 
     // Update is called once per frame
@@ -77,7 +78,14 @@ public class movement : MonoBehaviour
             speed = sprintSpeed;
             if (gun != null && Gun != null)
             {
-                Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, -80.367f);
+                if (newGun.weHaveRevolver)
+                {
+                    Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, -80.367f);
+                }
+                else if (newGun.weHaveShotgun)
+                {
+                    Gun.transform.localRotation = Quaternion.Euler(80.367f, 180, Gun.transform.localRotation.z);
+                }
                 gun.enabled = false;
             }
             throwNade.enabled = false;
@@ -88,7 +96,14 @@ public class movement : MonoBehaviour
             speed = saveSpeed;
             if (gun != null && Gun != null)
             {
-                Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, 0);
+                if (newGun.weHaveRevolver)
+                {
+                    Gun.transform.localRotation = Quaternion.Euler(Gun.transform.localRotation.x, 90, 0);
+                }
+                else if (newGun.weHaveShotgun)
+                {
+                    Gun.transform.localRotation = Quaternion.Euler(0, 180, Gun.transform.localRotation.z);
+                }
                 gun.enabled = true;
             }
             throwNade.enabled = true;
@@ -98,22 +113,23 @@ public class movement : MonoBehaviour
         {
             if (Input.GetKeyDown(crouch))
             {
+                speed = crouchSpeed;
                 transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
                 if (Gun != null)
                 {
                     Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y * 2, Gun.transform.localScale.z);
-                    speed = crouchSpeed;
                 }
                 hasCrouched = true;
             }
             else if (Input.GetKeyUp(crouch) && hasCrouched)
             {
+                speed = saveSpeed;
                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2, transform.localScale.z);
                 if (Gun != null)
                 {
                     Gun.transform.localScale = new Vector3(Gun.transform.localScale.x, Gun.transform.localScale.y / 2, Gun.transform.localScale.z);
-                    speed = saveSpeed;
+
                 }
                 hasCrouched = false;
             }
