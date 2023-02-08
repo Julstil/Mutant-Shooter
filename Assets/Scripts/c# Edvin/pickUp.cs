@@ -23,7 +23,6 @@ public class pickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        newGun = GameObject.FindGameObjectWithTag("Revolver").GetComponent<newGun>();
         throwNade = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<throwNade>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
@@ -37,17 +36,13 @@ public class pickUp : MonoBehaviour
             var gun = movement.Gun.GetComponent<Gun>();
             if (Ammo)
             {
-                if (newGun.weHaveRevolver || newGun.weHaveShotgun)
+                if (gun != null)
                 {
-                    if (gun != null)
+                    if (gun.extraAmmo < gun.maxExtraAmmo)
                     {
-                        if (gun.extraAmmo < gun.maxExtraAmmo)
-                        {
-                            gun.OutsideAmmo(addAmmo);
-                            Destroy(gameObject);
-                        } 
-                    }
-
+                        gun.OutsideAmmo(addAmmo);
+                        Destroy(gameObject);
+                    } 
                 }
             }
 
